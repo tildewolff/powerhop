@@ -1,0 +1,124 @@
+---
+// get page prop from loaded page
+const Page = Astro.props.Page;
+---
+
+<header>
+  <div class="headerContents">
+    <div id="mobileAlwaysVisible">
+      <div id="mobileLogo">[LOGO]</div>
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger">☰</div>
+    </div>
+
+    <!-- Mobile -->
+    <nav id="mobileMenu" class="hidden">
+      <a href="/index.html" class=`${Page==="Home" ? 'active':''}`>Home</a>
+      <a href="/OurServices" class=`${Page==="OurServices" ? 'active':''}`
+        >Our Services</a
+      >
+      <a href="/FAQ" class=`${Page==="FAQ" ? 'active':''}`>FAQ</a>
+      <a href="/AboutUs" class=`${Page==="AboutUs" ? 'active':''}`>About Us</a>
+      <a href="/Profile" class=`${Page==="Profile" ? 'active':''}`>Profile</a>
+    </nav>
+
+    <!-- Desktop -->
+
+    <div class="desktopMenu">
+      <div id="desktopGrid">
+        <div id="desktopLogo">[LOGO]</div>
+        <div id="desktopNav">
+          <a href="/index.html" class=`${Page==="Home" ? 'active':''}`>Home</a>
+          <a href="/OurServices" class=`${Page==="OurServices" ? 'active':''}`
+            >Our Services</a
+          >
+          <a href="/FAQ" class=`${Page==="FAQ" ? 'active':''}`>FAQ</a>
+          <a href="/AboutUs" class=`${Page==="AboutUs" ? 'active':''}`
+            >About Us</a
+          >
+          <a href="/Profile" class=`${Page==="Profile" ? 'active':''}`
+            >Profile</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+
+  <style>
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    a {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover {
+      color: green;
+    }
+
+    .active {
+      color: greenyellow;
+      text-decoration: underline;
+    }
+
+    /* mobile specific styling */
+    #mobileAlwaysVisible {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+    #mobileMenu {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      text-align: right;
+    }
+
+    /* hide desktop version when on mobile */
+    .desktopMenu {
+      display: none;
+    }
+
+    #mobileMenu.hidden {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      /* hide mobile version when on desktop */
+      #mobileAlwaysVisible,
+      #mobileMenu {
+        display: none;
+      }
+
+      .desktopMenu {
+        display: block;
+      }
+
+      #desktopGrid {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 1rem;
+      }
+      #desktopNav {
+        display: flex;
+        gap: 2rem;
+        justify-content: flex-end;
+      }
+    }
+  </style>
+</header>
