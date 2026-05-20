@@ -1,0 +1,52 @@
+---
+import ModelOption from "./ModelOption.astro";
+import powerhop1000 from "../assets/powerhop1000/face-1000-png.png";
+import powerhop2000 from "../assets/powerhop2000/face-2000-png.png";
+import powerhop8000 from "../assets/powerhop8000/face-8000-png.png";
+
+const models = [
+  {
+    id: "powerhop1000",
+    value: "powerhop1000",
+    modelName: "Power/Hop1000",
+    price: "₦24,000",
+    wattHours: "1,000",
+    inverter: "500",
+    image: powerhop1000,
+    alt: "PowerHop 1000 power unit",
+    checked: true,
+  },
+  {
+    id: "powerhop2000",
+    value: "powerhop2000",
+    modelName: "Power/Hop2000",
+    price: "₦36,000",
+    wattHours: "2,000",
+    inverter: "1,000",
+    image: powerhop2000,
+    alt: "PowerHop 2000 power unit",
+  },
+  {
+    id: "powerhop8000",
+    value: "powerhop8000",
+    modelName: "Power/Hop8000",
+    price: "₦90,000",
+    wattHours: "8,000",
+    inverter: "4,000",
+    image: powerhop8000,
+    alt: "PowerHop 8000 power unit",
+  },
+];
+---
+
+<div class="model-options">
+  {models.map((model) => <ModelOption name="selectedmodel" {...model} />)}
+</div>
+
+<style>
+  .model-options {
+    display: grid;
+    gap: 1.15rem;
+    width: min(100%, 32rem);
+  }
+</style>
