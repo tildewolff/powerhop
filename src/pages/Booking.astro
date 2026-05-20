@@ -1,261 +1,490 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ChooseYourModel from "../components/ChooseYourModel.astro";
+import ChooseYourAddons from "../components/ChooseYourAddons.astro";
+import FlowContinueButton from "../components/FlowContinueButton.astro";
+import FlowPreviousButton from "../components/FlowPreviousButton.astro";
 ---
 
 <Layout Page="AboutUs" Title="About Us">
   <h1>Booking Flow</h1>
+  <div class="booking-page">
+    <form id="bookingFlow">
+      <!-- Step 1: model selection -->
+      <section class="booking-step-one" id="one">
+        <p class="size-lg">
+          Select your PowerHop model:<span style="color: red;">*</span>
+        </p>
+        <ChooseYourModel />
+      </section>
 
-  <form id="bookingFlow">
-    <section class="booking-step-one" id="one">
-      <p>
-        Select your PowerHop model:<span style="color: red;">*</span>
-      </p>
-      <div class="form-control">
-        <input
-          type="radio"
-          id="powerhop1000"
-          name="selectedmodel"
-          value="powerhop1000"
-        />
-        <label for="powerhop1000">PowerHop1000</label><br />
-        <input
-          type="radio"
-          id="powerhop2000"
-          name="selectedmodel"
-          value="powerhop2000"
-        />
-        <label for="powerhop2000">PowerHop2000</label><br />
-        <input
-          type="radio"
-          id="powerhop8000"
-          name="selectedmodel"
-          value="powerhop8000"
-        />
-        <label for="powerhop8000">PowerHop8000</label>
-      </div>
-    </section>
+      <!-- Step 2: optional add-ons -->
+      <section class="booking-step-two" id="two">
+        <p>Select any optional add-ons:</p>
+        <ChooseYourAddons />
+      </section>
 
-    <section class="booking-step-two" id="two">
-      <p>Select any optional add-ons:</p>
-      <div class="form-control">
-        <input type="checkbox" id="solarcell" name="selectedpowerups" />
-        <label for="solarcell">Solar Cell</label>
-      </div>
-    </section>
-
-    <section class="booking-step-three" id="three">
-      <p>Add the address for installation:<span style="color: red;">*</span></p>
-      <div class="form-control">
-        <input
-          type="text"
-          id="installationaddressstreet"
-          name="installationaddressstreet"
-        />
-        <label for="installationaddressstreet">Street Name</label>
-      </div>
-
-      <div class="form-group">
-        <div class="form-control">
-          <input
-            type="text"
-            id="installationaddresshousenumber"
-            name="installationaddresshousenumber"
-          />
-          <label for="installationaddresshousenumber">House Number</label>
-        </div>
-        <div class="form-control">
-          <input
-            type="text"
-            id="installationaddresspostalcode"
-            name="installationaddresspostalcode"
-          />
-          <label for="installationaddresspostalcode">Postal Code</label>
-        </div>
-      </div>
-
-      <div class="form-control">
-        <select id="installationaddressstate" name="installationaddressstate">
-          <option value="lagos" selected={true}>Lagos</option>
-          <option value="kano">Kano</option>
-          <option value="katsina">Katsina</option>
-          <option value="bauchi">Bauchi</option>
-        </select>
-        <label for="installationaddressstate">State</label>
-      </div>
-
-      <div class="form-control">
-        <select
-          id="installationaddresscountry"
-          name="installationaddresscountry"
-        >
-          <option value="" disabled={true} selected={true}>
-            Select country
-          </option>
-
-          <option value="nigeria">Nigeria</option>
-        </select>
-        <label for="installationaddresscountry">Country</label>
-      </div>
-    </section>
-
-    <section class="booking-step-four" id="four">
-      <div class="form-control">
+      <!-- Step 3: installation address -->
+      <section class="booking-step-three" id="three">
         <p>
-          Select the date and time for installation:<span style="color: red;"
+          Add the address for installation:<span style="color: red;">*</span>
+        </p>
+        <div class="form-control">
+          <input
+            type="text"
+            id="installationaddressstreet"
+            name="installationaddressstreet"
+          />
+          <label for="installationaddressstreet">Street Name</label>
+        </div>
+
+        <div class="form-group">
+          <div class="form-control">
+            <input
+              type="text"
+              id="installationaddresshousenumber"
+              name="installationaddresshousenumber"
+            />
+            <label for="installationaddresshousenumber">House Number</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="installationaddresspostalcode"
+              name="installationaddresspostalcode"
+            />
+            <label for="installationaddresspostalcode">Postal Code</label>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <select id="installationaddressstate" name="installationaddressstate">
+            <option value="" disabled={true} selected={true}>
+              Select state
+            </option>
+            <option value="lagos">Lagos</option>
+            <option value="kano">Kano</option>
+            <option value="katsina">Katsina</option>
+            <option value="bauchi">Bauchi</option>
+          </select>
+          <label for="installationaddressstate">State</label>
+        </div>
+
+        <div class="form-control">
+          <select
+            id="installationaddresscountry"
+            name="installationaddresscountry"
+          >
+            <option value="" disabled={true} selected={true}>
+              Select country
+            </option>
+
+            <option value="nigeria">Nigeria</option>
+          </select>
+          <label for="installationaddresscountry">Country</label>
+        </div>
+      </section>
+
+      <!-- Step 4: installation date and time -->
+      <section class="booking-step-four" id="four">
+        <div class="form-control">
+          <p>
+            Select the date and time for installation:<span style="color: red;"
+              >*</span
+            >
+          </p>
+          <input type="date" id="installationdate" name="installationdate" />
+          <label for="installationdate">Date</label>
+        </div>
+        <div class="form-control">
+          <select id="installationtime" name="installationtime">
+            <option value="08:00">08:00</option>
+            <option value="10:00">10:00</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+          </select>
+          <label for="installationtime">Time</label>
+        </div>
+
+        <script>
+          const today = new Date().toISOString().split("T")[0];
+
+          const dateInput = document.getElementById(
+            "installationdate",
+          ) as HTMLInputElement;
+
+          dateInput.value = today;
+          dateInput.min = today;
+        </script>
+      </section>
+
+      <!-- Step 5: customer contact details -->
+      <section class="booking-step-five" id="five">
+        <p>
+          Add your contact information, or login to an existing user profile:<span
+            style="color: red;">*</span
+          >
+        </p>
+
+        <div class="form-group">
+          <div class="form-control">
+            <input type="text" id="forename" name="forename" />
+            <label for="forename">Name</label>
+          </div>
+          <div class="form-control">
+            <input type="text" id="surname" name="surname" />
+            <label for="forename">Last Name</label>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <input type="text" id="email" name="email" />
+          <label for="email">Email</label>
+        </div>
+        <div class="form-control">
+          <input type="text" id="phone" name="phone" />
+          <label for="phone">Phone Number</label>
+        </div>
+      </section>
+
+      <!-- Step 6: payment and billing address -->
+      <section class="booking-step-six" id="six">
+        <p>
+          Add your card details and billing address:<span style="color: red;"
             >*</span
           >
         </p>
-        <input type="date" id="installationdate" name="installationdate" />
-        <label for="installationdate">Date</label>
-      </div>
-      <div class="form-control">
-        <select id="installationtime" name="installationtime">
-          <option value="08:00">08:00</option>
-          <option value="10:00">10:00</option>
-          <option value="12:00">12:00</option>
-          <option value="14:00">14:00</option>
-          <option value="16:00">16:00</option>
-        </select>
-        <label for="installationtime">Time</label>
-      </div>
-
-      <script>
-        const today = new Date().toISOString().split("T")[0];
-
-        const dateInput = document.getElementById(
-          "installationdate",
-        ) as HTMLInputElement;
-
-        dateInput.value = today;
-        dateInput.min = today;
-      </script>
-    </section>
-
-    <section class="booking-step-five" id="five">
-      <p>
-        Add your contact information, or login to an existing user profile:<span
-          style="color: red;">*</span
-        >
-      </p>
-
-      <div class="form-group">
         <div class="form-control">
-          <input type="text" id="forename" name="forename" />
-          <label for="forename">Name</label>
+          <input type="text" id="nameoncard" name="nameoncard" />
+          <label for="nameoncard">Full Name on Card</label>
         </div>
         <div class="form-control">
-          <input type="text" id="surname" name="surname" />
-          <label for="forename">Last Name</label>
+          <input type="text" id="cardnumber" name="cardnumber" />
+          <label for="cardnumber">Card</label>
         </div>
-      </div>
-
-      <div class="form-control">
-        <input type="text" id="email" name="email" />
-        <label for="email">Email</label>
-      </div>
-      <div class="form-control">
-        <input type="text" id="phone" name="phone" />
-        <label for="phone">Phone Number</label>
-      </div>
-    </section>
-
-    <section class="booking-step-six" id="six">
-      <p>
-        Add your card details and billing address:<span style="color: red;"
-          >*</span
-        >
-      </p>
-      <div class="form-control">
-        <input type="text" id="nameoncard" name="nameoncard" />
-        <label for="nameoncard">Full Name on Card</label>
-      </div>
-      <div class="form-control">
-        <input type="text" id="cardnumber" name="cardnumber" />
-        <label for="cardnumber">Card</label>
-      </div>
-      <div class="form-group">
-        <div class="form-control">
-          <input type="month" id="cardexpiry" name="cardexpiry" />
-          <label for="cardexpiry">Expiry</label>
+        <div class="form-group">
+          <div class="form-control">
+            <input type="month" id="cardexpiry" name="cardexpiry" />
+            <label for="cardexpiry">Expiry</label>
+          </div>
+          <div class="form-control">
+            <input type="text" id="cardcvv" name="cardcvv" />
+            <label for="cardcvv">CVV</label>
+          </div>
         </div>
-        <div class="form-control">
-          <input type="text" id="cardcvv" name="cardcvv" />
-          <label for="cardcvv">CVV</label>
-        </div>
-      </div>
-      <br />
+        <br />
 
-      <div class="form-control">
-        <input
-          type="text"
-          id="billingaddressstreet"
-          name="billingaddressstreet"
-        />
-        <label for="billingaddressstreet">Street Name</label>
-      </div>
-
-      <div class="form-group">
         <div class="form-control">
           <input
             type="text"
-            id="billingaddresshousenumber"
-            name="billingaddresshousenumber"
+            id="billingaddressstreet"
+            name="billingaddressstreet"
           />
-          <label for="billingaddresshousenumber">House Number</label>
+          <label for="billingaddressstreet">Street Name</label>
         </div>
+
+        <div class="form-group">
+          <div class="form-control">
+            <input
+              type="text"
+              id="billingaddresshousenumber"
+              name="billingaddresshousenumber"
+            />
+            <label for="billingaddresshousenumber">House Number</label>
+          </div>
+          <div class="form-control">
+            <input
+              type="text"
+              id="billingaddresspostalcode"
+              name="billingaddresspostalcode"
+            />
+            <label for="billingaddresspostalcode">Postal Code</label>
+          </div>
+        </div>
+
         <div class="form-control">
-          <input
-            type="text"
-            id="billingaddresspostalcode"
-            name="billingaddresspostalcode"
-          />
-          <label for="billingaddresspostalcode">Postal Code</label>
+          <select id="billingaddressstate" name="billingaddressstate">
+            <option value="" disabled={true} selected={true}>
+              Select state
+            </option>
+            <option value="lagos">Lagos</option>
+            <option value="kano">Kano</option>
+            <option value="katsina">Katsina</option>
+            <option value="bauchi">Bauchi</option>
+          </select>
+          <label for="billingaddressstate">State</label>
         </div>
-      </div>
 
-      <div class="form-control">
-        <select id="billingaddressstate" name="billingaddressstate">
-          <option value="lagos" selected={true}>Lagos</option>
-          <option value="kano">Kano</option>
-          <option value="katsina">Katsina</option>
-          <option value="bauchi">Bauchi</option>
-        </select>
-        <label for="billingaddressstate">State</label>
-      </div>
+        <div class="form-control">
+          <select id="billingaddresscountry" name="billingaddresscountry">
+            <option value="" disabled={true} selected={true}>
+              Select country
+            </option>
 
-      <div class="form-control">
-        <select id="billingaddresscountry" name="billingaddresscountry">
-          <option value="" disabled={true} selected={true}>
-            Select country
-          </option>
+            <option value="nigeria">Nigeria</option>
+          </select>
+          <label for="billingaddresscountry">Country</label>
+        </div>
+      </section>
 
-          <option value="nigeria">Nigeria</option>
-        </select>
-        <label for="billingaddresscountry">Country</label>
-      </div>
-    </section>
+      <!-- Step 7: final review before submitting to Supabase -->
+      <section class="booking-step-seven" id="seven">
+        <p>Please ensure all details are correct:</p>
 
-    <section class="booking-step-seven" id="seven">
-      <p>Please ensure all details are correct:</p>
-      <button type="submit">Submit booking</button>
-    </section>
-  </form>
+        <div class="booking-summary">
+          <div class="summary-row">
+            <div>
+              <h2>Chosen model</h2>
+              <p id="summaryModel">Power/Hop 1000</p>
+            </div>
+            <button type="button" class="summary-edit" data-step="0">
+              Edit
+            </button>
+          </div>
 
+          <div class="summary-row">
+            <div>
+              <h2>Power-ups</h2>
+              <p id="summaryPowerups">None</p>
+            </div>
+            <button type="button" class="summary-edit" data-step="1">
+              Edit
+            </button>
+          </div>
+
+          <div class="summary-row">
+            <div>
+              <h2>Installation address</h2>
+              <p id="summaryInstallationAddress">-</p>
+            </div>
+            <button type="button" class="summary-edit" data-step="2">
+              Edit
+            </button>
+          </div>
+
+          <div class="summary-row">
+            <div>
+              <h2>Installation date & time</h2>
+              <p id="summaryInstallationDateTime">-</p>
+            </div>
+            <button type="button" class="summary-edit" data-step="3">
+              Edit
+            </button>
+          </div>
+
+          <div class="summary-row">
+            <div>
+              <h2>Contact details</h2>
+              <p id="summaryContact">-</p>
+            </div>
+            <button type="button" class="summary-edit" data-step="4">
+              Edit
+            </button>
+          </div>
+
+          <div class="summary-row">
+            <div>
+              <h2>Billing information</h2>
+              <p id="summaryBilling">-</p>
+            </div>
+            <button type="button" class="summary-edit" data-step="5">
+              Edit
+            </button>
+          </div>
+
+          <div class="summary-total">
+            <span>Total billed monthly</span>
+            <strong id="summaryTotal">₦24,000 / month</strong>
+          </div>
+
+          <button type="submit" class="summary-submit">
+            Confirm and authenticate ->
+          </button>
+        </div>
+      </section>
+    </form>
+  </div>
   <p id="stepInfo"></p>
 
-  <button type="button" id="navLeft">Previous</button>
-  <button type="button" id="navRight">Continue</button>
+  <div class="buttons-control">
+    <FlowPreviousButton /><FlowContinueButton />
+  </div>
 
+  <!-- Handles step navigation, per-step validation, and the live review summary. -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const stepInfo = document.getElementById("stepInfo");
       const navLeft = document.getElementById("navLeft");
       const navRight = document.getElementById("navRight");
+      const form = document.getElementById("bookingFlow") as HTMLFormElement;
 
       const formSteps = ["one", "two", "three", "four", "five", "six", "seven"];
+      const modelDetails = {
+        powerhop1000: {
+          label: "Power/Hop 1000",
+          total: "<span>₦24,000</span> / month",
+        },
+        powerhop2000: {
+          label: "Power/Hop 2000",
+          total: "<span>₦36,000</span> / month",
+        },
+        powerhop8000: {
+          label: "Power/Hop 8000",
+          total: "<span>₦90,000</span> / month",
+        },
+      };
 
       let currentStep = 0;
 
+      // Read the current form state. This also handles radio groups cleanly.
+      const value = (name: string) =>
+        new FormData(form).get(name)?.toString() || "";
+
+      // Get the visible label from a select instead of its lowercase value.
+      const selectedText = (name: string) => {
+        const element = document.querySelector<HTMLSelectElement>(
+          `[name="${name}"]`,
+        );
+
+        if (!element || !element.value) {
+          return "";
+        }
+
+        return element.selectedOptions[0]?.textContent?.trim() || "";
+      };
+
+      // Fill one summary element, falling back to a dash when data is missing.
+      const fillText = (id: string, text: string) => {
+        const element = document.getElementById(id);
+
+        if (element) {
+          element.innerHTML = text || "-";
+        }
+      };
+
+      const formatAddress = (
+        street: string,
+        house: string,
+        postal: string,
+        state: string,
+        country: string,
+      ) =>
+        [
+          street && house ? `${street} ${house}` : street || house,
+          postal,
+          state,
+          country,
+        ]
+          .filter(Boolean)
+          .join(", ");
+
+      const formatDate = (date: string) => {
+        if (!date) return "";
+
+        return new Intl.DateTimeFormat("en-GB", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }).format(new Date(date));
+      };
+
+      // Keep the final card display private by only showing the last four digits.
+      const maskCard = (cardNumber: string) => {
+        const digits = cardNumber.replace(/\D/g, "");
+
+        if (!digits) return "";
+
+        return `**** **** **** ${digits.slice(-4)}`;
+      };
+
+      // Rebuild the review card from the current form values.
+      function updateSummary() {
+        const selectedModel = value(
+          "selectedmodel",
+        ) as keyof typeof modelDetails;
+        const model = modelDetails[selectedModel] ?? modelDetails.powerhop1000;
+        const hasSolarCell = (
+          form.elements.namedItem("selectedpowerups") as HTMLInputElement
+        )?.checked;
+        const installationAddress = formatAddress(
+          value("installationaddressstreet"),
+          value("installationaddresshousenumber"),
+          value("installationaddresspostalcode"),
+          selectedText("installationaddressstate"),
+          selectedText("installationaddresscountry"),
+        );
+        const billingAddress = formatAddress(
+          value("billingaddressstreet"),
+          value("billingaddresshousenumber"),
+          value("billingaddresspostalcode"),
+          selectedText("billingaddressstate"),
+          selectedText("billingaddresscountry"),
+        );
+        const contactName = [value("forename"), value("surname")]
+          .filter(Boolean)
+          .join(" ");
+        const billingLines = [
+          value("nameoncard"),
+          maskCard(value("cardnumber")),
+          billingAddress,
+        ].filter(Boolean);
+
+        fillText("summaryModel", model.label);
+        fillText("summaryPowerups", hasSolarCell ? "Solar Cell" : "None");
+        fillText("summaryInstallationAddress", installationAddress);
+        fillText(
+          "summaryInstallationDateTime",
+          [formatDate(value("installationdate")), value("installationtime")]
+            .filter(Boolean)
+            .join(" - "),
+        );
+        fillText(
+          "summaryContact",
+          [contactName, value("email"), value("phone")]
+            .filter(Boolean)
+            .join("<br />"),
+        );
+        fillText("summaryBilling", billingLines.join("<br />"));
+        fillText("summaryTotal", model.total);
+      }
+
+      // Stop the user from advancing if required fields on this step are empty.
+      function validateCurrentStep() {
+        const currentSection = document.getElementById(formSteps[currentStep]);
+
+        if (!currentSection) {
+          return true;
+        }
+
+        const controls = Array.from(
+          currentSection.querySelectorAll<HTMLInputElement | HTMLSelectElement>(
+            "input, select",
+          ),
+        ).filter(
+          (control) =>
+            !["button", "submit", "reset", "checkbox"].includes(control.type),
+        );
+
+        const invalidControl = controls.find((control) => {
+          const isEmpty = control.value.trim() === "";
+
+          control.setCustomValidity(
+            isEmpty ? "Please fill out this field." : "",
+          );
+
+          return isEmpty;
+        });
+
+        if (invalidControl) {
+          invalidControl.reportValidity();
+          return false;
+        }
+
+        return true;
+      }
+
+      // Show only the active section and update the nav button visibility.
       function updateStepVisibility() {
         formSteps.forEach((step) => {
           const section = document.getElementById(step);
@@ -283,12 +512,21 @@ import Layout from "../layouts/Layout.astro";
           navRight.style.display =
             currentStep === formSteps.length - 1 ? "none" : "block";
         }
+
+        if (currentStep === formSteps.length - 1) {
+          updateSummary();
+        }
       }
 
       updateStepVisibility();
 
+      // Continue validates the current step before moving forward.
       if (navRight) {
         navRight.addEventListener("click", () => {
+          if (!validateCurrentStep()) {
+            return;
+          }
+
           if (currentStep < formSteps.length - 1) {
             currentStep++;
             updateStepVisibility();
@@ -296,6 +534,7 @@ import Layout from "../layouts/Layout.astro";
         });
       }
 
+      // Previous never validates, so the user can go back freely.
       if (navLeft) {
         navLeft.addEventListener("click", () => {
           if (currentStep > 0) {
@@ -304,9 +543,20 @@ import Layout from "../layouts/Layout.astro";
           }
         });
       }
+
+      // Edit buttons on the review card jump back to the relevant step.
+      document
+        .querySelectorAll<HTMLButtonElement>(".summary-edit")
+        .forEach((button) => {
+          button.addEventListener("click", () => {
+            currentStep = Number(button.dataset.step || 0);
+            updateStepVisibility();
+          });
+        });
     });
   </script>
 
+  <!-- Submits the completed booking to Supabase. -->
   <script>
     import { createClient } from "@supabase/supabase-js";
 
@@ -322,48 +572,60 @@ import Layout from "../layouts/Layout.astro";
       event.preventDefault();
 
       const formData = new FormData(form);
+      const field = (name: string) => formData.get(name)?.toString() || "";
 
-      const cardNumber = formData.get("cardnumber")?.toString() || "";
+      // Supabase bigint columns should receive null instead of an empty string.
+      const bigintField = (name: string) => {
+        const value = field(name).trim();
+        return value === "" ? null : value;
+      };
+      const selectedModel = field("selectedmodel");
 
+      if (!selectedModel) {
+        alert("Please select a PowerHop model.");
+        return;
+      }
+
+      // The object keys should match the Supabase bookings table columns.
       const booking = {
-        selectedmodel: formData.get("selectedmodel"),
+        selectedmodel: selectedModel,
         selectedpowerups: formData.has("selectedpowerups"),
 
-        installationaddressstreet: formData.get("installationaddressstreet"),
-        installationaddresshousenumber: formData.get(
+        installationaddressstreet: field("installationaddressstreet"),
+        installationaddresshousenumber: bigintField(
           "installationaddresshousenumber",
         ),
-        installationaddresspostalcode: formData.get(
+        installationaddresspostalcode: bigintField(
           "installationaddresspostalcode",
         ),
-        installationaddressstate: formData.get("installationaddressstate"),
-        installationaddresscountry: formData.get("installationaddresscountry"),
+        installationaddressstate: field("installationaddressstate"),
+        installationaddresscountry: field("installationaddresscountry"),
 
-        installationdate: formData.get("installationdate"),
-        installationtime: formData.get("installationtime"),
+        installationdate: field("installationdate"),
+        installationtime: field("installationtime"),
 
-        forename: formData.get("forename"),
-        surname: formData.get("surname"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
+        forename: field("forename"),
+        surname: field("surname"),
+        email: field("email"),
+        phone: bigintField("phone"),
 
-        nameoncard: formData.get("nameoncard"),
-        cardnumber: formData.get("cardnumber"),
-        cardexpiry: formData.get("cardexpiry"),
-        cardcvv: formData.get("cardcvv"),
+        nameoncard: field("nameoncard"),
+        cardnumber: bigintField("cardnumber"),
+        cardexpiry: field("cardexpiry"),
+        cardcvv: bigintField("cardcvv"),
 
-        billingaddressstreet: formData.get("billingaddressstreet"),
-        billingaddresshousenumber: formData.get("billingaddresshousenumber"),
-        billingaddresspostalcode: formData.get("billingaddresspostalcode"),
-        billingaddressstate: formData.get("billingaddressstate"),
-        billingaddresscountry: formData.get("billingaddresscountry"),
+        billingaddressstreet: field("billingaddressstreet"),
+        billingaddresshousenumber: bigintField("billingaddresshousenumber"),
+        billingaddresspostalcode: bigintField("billingaddresspostalcode"),
+        billingaddressstate: field("billingaddressstate"),
+        billingaddresscountry: field("billingaddresscountry"),
       };
 
       const { error } = await supabase.from("bookings").insert(booking);
 
       if (error) {
         console.error(error);
-        alert("Something went wrong.");
+        alert(`Something went wrong: ${error.message}`);
         return;
       }
 

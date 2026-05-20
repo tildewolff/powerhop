@@ -1,0 +1,26 @@
+---
+import AddOnOption from "./AddOnOption.astro";
+
+const addOns = [
+  {
+    id: "solarcell",
+    name: "selectedpowerups",
+    label: "Solar Cell",
+    value: "solarcell",
+    price: "₦8,000",
+    inputWatts: "250",
+  },
+];
+---
+
+<div class="addon-options">
+  {addOns.map((addOn) => <AddOnOption {...addOn} />)}
+</div>
+
+<style>
+  .addon-options {
+    display: grid;
+    gap: 1.15rem;
+    width: min(100%, 32rem);
+  }
+</style>

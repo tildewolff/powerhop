@@ -1,0 +1,154 @@
+---
+import { Image } from "astro:assets";
+
+// Defined props for the ModelOption component
+interface Props {
+  id: string;
+  name: string;
+  value: string;
+  modelName: string;
+  price: string;
+  wattHours: string;
+  inverter: string;
+  image: ImageMetadata;
+  alt: string;
+  checked?: boolean;
+}
+
+// Astro.props receives the values passed in from ChooseYourModel.astro
+const {
+  id,
+  name,
+  value,
+  modelName,
+  price,
+  wattHours,
+  inverter,
+  image,
+  alt,
+  checked = false,
+} = Astro.props;
+---
+
+<!-- The label wraps the whole card, so clicking anywhere selects the radio -->
+<label class="model-option" for={id}>
+  <input
+    id={id}
+    type="radio"
+    name={name}
+    value={value}
+    checked={checked}
+    required
+  />
+
+  <span class="model-card">
+    <span class="model-copy">
+      <span
+        class="model-name mb-2 font-display text-3xl font-bold leading-none tracking-normal uppercase"
+      >
+        {modelName}
+      </span>
+      <span class="model-spec font-mono text-lg">{price} / MONTH</span>
+      <span class="model-spec font-mono text-lg">{wattHours} WH POWER</span>
+      <span class="model-spec font-mono text-lg">{inverter} W INVERTER</span>
+      <span class="model-link text-light-muted">Full details</span>
+    </span>
+
+    <Image class="model-image" src={image} alt={alt} width={150} />
+  </span>
+</label>
+
+<style>
+  .model-option {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Hide the default radio visually, but keep it available to forms and keyboards. */
+  .model-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* This span is the visual version of the radio button. */
+  .model-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 40%;
+    align-items: center;
+    min-height: 7.25rem;
+    border: 1px solid #b7b7b7;
+    background: #f8f8f3;
+    color: #a9a9a9;
+    opacity: 0.55;
+    transition:
+      border-color 160ms ease,
+      background-color 160ms ease,
+      color 160ms ease,
+      opacity 160ms ease;
+  }
+
+  /* The adjacent sibling selector styles the card when its radio is checked. */
+  .model-option input:checked + .model-card {
+    border-color: #009f5c;
+    background: #e7f4ed;
+    color: #111111;
+    opacity: 1;
+  }
+
+  .model-option input:focus-visible + .model-card {
+    outline: 3px solid #111111;
+    outline-offset: 3px;
+  }
+
+  .model-copy {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 0 0.55rem 1rem;
+    min-width: 0;
+    line-height: 1.08;
+    position: relative;
+    z-index: 1;
+  }
+
+  .model-name {
+    display: block;
+    color: #111111;
+  }
+
+  .model-option input:checked + .model-card .model-name {
+    color: #009f5c;
+  }
+
+  .model-spec {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  .model-link {
+    width: fit-content;
+    margin-top: 0.35rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7rem;
+    text-decoration: underline;
+  }
+
+  .model-image {
+    width: 100%;
+    height: 100%;
+    max-height: 7.25rem;
+    object-fit: contain;
+    object-position: right bottom;
+    align-self: end;
+  }
+
+  @media (min-width: 42rem) {
+    .model-card {
+      grid-template-columns: minmax(0, 1fr) 36%;
+    }
+  }
+</style>
