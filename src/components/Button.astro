@@ -24,6 +24,10 @@ const text = Astro.props.text ?? defaultText;
 
 // Map variant number → CSS modifier class
 const variantClass = `btn--v${variant}`;
+
+// seudo code for tailwind styling:
+// if variant == 1 then add class "bg-green" an other styles
+// same for other variants, with different colors and styles
 ---
 
 <a
@@ -60,12 +64,13 @@ const variantClass = `btn--v${variant}`;
   }
 
   .btn:hover {
-    transform: translateY(-1px);
+    /* transform: translateY(-1px); */
   }
   .btn:active {
     transform: translateY(0);
   }
 
+  /* temporary color styling for variants. add tailwind classes when i understand... */
   /* ── Variant 1 – green / white text ───────────────────────── */
   .btn--v1 {
     background-color: #2d7a45;
