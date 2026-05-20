@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import "../styles/global.css";
 ---
 
 <Layout Page="OurServices" Title="Our Services">
@@ -30,7 +32,7 @@ import Layout from "../layouts/Layout.astro";
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
       orci nec nunc sollicitudin venenatis.
     </p>
-    <button>Power/Hop1000</button>
+    <Button href="link..." variant={1} text="POWER/HOP1000 →" />
   </div>
   <div>
     <img src="" alt="" />
@@ -39,7 +41,7 @@ import Layout from "../layouts/Layout.astro";
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
       orci nec nunc sollicitudin venenatis.
     </p>
-    <button>Power/Hop2000</button>
+    <Button href="link..." variant={1} text="POWER/HOP2000 →" />
   </div>
   <div>
     <img src="" alt="" />
@@ -48,12 +50,12 @@ import Layout from "../layouts/Layout.astro";
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
       orci nec nunc sollicitudin venenatis.
     </p>
-    <button>Power/Hop8000</button>
+    <Button href="link..." variant={1} text="POWER/HOP8000 →" />
   </div>
   <h2>Need a hand?</h2>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci
     nec nunc sollicitudin venenatis.
   </p>
-  <button>Help</button>
+  <Button href="link..." variant={3} text="Help →" />
 </Layout>

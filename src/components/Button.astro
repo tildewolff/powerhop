@@ -1,0 +1,115 @@
+---
+/**
+ * Props:
+ *  - href       (string, required)  – destination URL
+ *  - text       (string, optional)  – button label; defaults per variant
+ *  - variant    (1 | 2 | 3 | 4)    – visual style; defaults to 1
+ *  - target     (string, optional)  – e.g. "_blank"
+ *  - class      (string, optional)  – extra classes passed from the parent
+ */
+
+interface Props {
+  href: string;
+  text?: string;
+  variant?: 1 | 2 | 3 | 4;
+  target?: string;
+  class?: string;
+}
+
+const { href, variant = 1, target, class: extraClass = "" } = Astro.props;
+
+// Default label per variant (variant 4 is "previous", others are "read more")
+const defaultText = variant === 4 ? "← Previous" : "Read more →";
+const text = Astro.props.text ?? defaultText;
+
+// Map variant number → CSS modifier class
+const variantClass = `btn--v${variant}`;
+---
+
+<a
+  href={href}
+  target={target}
+  class={`btn ${variantClass} ${extraClass}`.trim()}
+>
+  {text}
+</a>
+
+<style>
+  /* ── Base button ───────────────────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 135px;
+    padding: 0.55em 1.35em;
+    border-radius: 999px; /* fully rounded / pill shape  */
+    border: 2px solid transparent;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease,
+      transform 100ms ease;
+    white-space: nowrap;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  /* ── Variant 1 – green / white text ───────────────────────── */
+  .btn--v1 {
+    background-color: #2d7a45;
+    color: #ffffff;
+    border-color: #2d7a45;
+  }
+  .btn--v1:hover {
+    background-color: #256038;
+    border-color: #256038;
+    box-shadow: 0 4px 12px rgba(45, 122, 69, 0.35);
+  }
+
+  /* ── Variant 2 – light green / white text ─────────────────── */
+  .btn--v2 {
+    background-color: #6abf80;
+    color: #ffffff;
+    border-color: #6abf80;
+  }
+  .btn--v2:hover {
+    background-color: #58ae6e;
+    border-color: #58ae6e;
+    box-shadow: 0 4px 12px rgba(106, 191, 128, 0.4);
+  }
+
+  /* ── Variant 3 – black / white text ───────────────────────── */
+  .btn--v3 {
+    background-color: #111111;
+    color: #ffffff;
+    border-color: #111111;
+  }
+  .btn--v3:hover {
+    background-color: #000000;
+    border-color: #000000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ── Variant 4 – white / black border / black text ────────── */
+  .btn--v4 {
+    background-color: #ffffff;
+    color: #111111;
+    border-color: #111111;
+  }
+  .btn--v4:hover {
+    background-color: #f4f4f4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+</style>

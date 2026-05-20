@@ -1,12 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import "../styles/global.css";
 ---
 
 <Layout Page="Home" Title="Home">
   <a href="/Booking.html">Booking</a>
-  <h1>The next chapter of accessible at-home energy.</h1>
+  <h1 class="font-display text-hero">
+    The next chapter of accessible at-home energy.
+  </h1>
   <img class="heroImg" src="" alt="" />
-  <button>discover POWER/HOP1000</button>
+  <!-- temporary non functional link, CHANGE WHEN READY -->
+  <Button href="link..." variant={2} text="Discover POWER/HOP1000 →" />
   <div>
     <h2>Our solution to unreliable grids.</h2>
     <p>POWER/HOP series</p>
@@ -22,7 +27,7 @@ import Layout from "../layouts/Layout.astro";
       providing either 1,000, 2,000 or 8,000 Wh of maximum stored power
       respectively, there is an affordable solution to every need.
     </p>
-    <button>Models</button>
+    <Button href="link..." variant={1} text="Models →" />
   </div>
   <div>
     <h3>₦0 STARTUP COST</h3>
@@ -66,5 +71,5 @@ import Layout from "../layouts/Layout.astro";
     molestie mi. Nunc non ligula auctor dui placerat pharetra. Fusce eget ante
     convallis, congue est placerat, bibendum justo.
   </p>
-  <button>About us</button>
+  <Button href="link..." variant={1} text="About us →" />
 </Layout>
