@@ -1,0 +1,374 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout Page="AboutUs" Title="About Us">
+  <h1>Booking Flow</h1>
+
+  <form id="bookingFlow">
+    <section class="booking-step-one" id="one">
+      <p>
+        Select your PowerHop model:<span style="color: red;">*</span>
+      </p>
+      <div class="form-control">
+        <input
+          type="radio"
+          id="powerhop1000"
+          name="selectedmodel"
+          value="powerhop1000"
+        />
+        <label for="powerhop1000">PowerHop1000</label><br />
+        <input
+          type="radio"
+          id="powerhop2000"
+          name="selectedmodel"
+          value="powerhop2000"
+        />
+        <label for="powerhop2000">PowerHop2000</label><br />
+        <input
+          type="radio"
+          id="powerhop8000"
+          name="selectedmodel"
+          value="powerhop8000"
+        />
+        <label for="powerhop8000">PowerHop8000</label>
+      </div>
+    </section>
+
+    <section class="booking-step-two" id="two">
+      <p>Select any optional add-ons:</p>
+      <div class="form-control">
+        <input type="checkbox" id="solarcell" name="selectedpowerups" />
+        <label for="solarcell">Solar Cell</label>
+      </div>
+    </section>
+
+    <section class="booking-step-three" id="three">
+      <p>Add the address for installation:<span style="color: red;">*</span></p>
+      <div class="form-control">
+        <input
+          type="text"
+          id="installationaddressstreet"
+          name="installationaddressstreet"
+        />
+        <label for="installationaddressstreet">Street Name</label>
+      </div>
+
+      <div class="form-group">
+        <div class="form-control">
+          <input
+            type="text"
+            id="installationaddresshousenumber"
+            name="installationaddresshousenumber"
+          />
+          <label for="installationaddresshousenumber">House Number</label>
+        </div>
+        <div class="form-control">
+          <input
+            type="text"
+            id="installationaddresspostalcode"
+            name="installationaddresspostalcode"
+          />
+          <label for="installationaddresspostalcode">Postal Code</label>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <select id="installationaddressstate" name="installationaddressstate">
+          <option value="lagos" selected={true}>Lagos</option>
+          <option value="kano">Kano</option>
+          <option value="katsina">Katsina</option>
+          <option value="bauchi">Bauchi</option>
+        </select>
+        <label for="installationaddressstate">State</label>
+      </div>
+
+      <div class="form-control">
+        <select
+          id="installationaddresscountry"
+          name="installationaddresscountry"
+        >
+          <option value="" disabled={true} selected={true}>
+            Select country
+          </option>
+
+          <option value="nigeria">Nigeria</option>
+        </select>
+        <label for="installationaddresscountry">Country</label>
+      </div>
+    </section>
+
+    <section class="booking-step-four" id="four">
+      <div class="form-control">
+        <p>
+          Select the date and time for installation:<span style="color: red;"
+            >*</span
+          >
+        </p>
+        <input type="date" id="installationdate" name="installationdate" />
+        <label for="installationdate">Date</label>
+      </div>
+      <div class="form-control">
+        <select id="installationtime" name="installationtime">
+          <option value="08:00">08:00</option>
+          <option value="10:00">10:00</option>
+          <option value="12:00">12:00</option>
+          <option value="14:00">14:00</option>
+          <option value="16:00">16:00</option>
+        </select>
+        <label for="installationtime">Time</label>
+      </div>
+
+      <script>
+        const today = new Date().toISOString().split("T")[0];
+
+        const dateInput = document.getElementById(
+          "installationdate",
+        ) as HTMLInputElement;
+
+        dateInput.value = today;
+        dateInput.min = today;
+      </script>
+    </section>
+
+    <section class="booking-step-five" id="five">
+      <p>
+        Add your contact information, or login to an existing user profile:<span
+          style="color: red;">*</span
+        >
+      </p>
+
+      <div class="form-group">
+        <div class="form-control">
+          <input type="text" id="forename" name="forename" />
+          <label for="forename">Name</label>
+        </div>
+        <div class="form-control">
+          <input type="text" id="surname" name="surname" />
+          <label for="forename">Last Name</label>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <input type="text" id="email" name="email" />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-control">
+        <input type="text" id="phone" name="phone" />
+        <label for="phone">Phone Number</label>
+      </div>
+    </section>
+
+    <section class="booking-step-six" id="six">
+      <p>
+        Add your card details and billing address:<span style="color: red;"
+          >*</span
+        >
+      </p>
+      <div class="form-control">
+        <input type="text" id="nameoncard" name="nameoncard" />
+        <label for="nameoncard">Full Name on Card</label>
+      </div>
+      <div class="form-control">
+        <input type="text" id="cardnumber" name="cardnumber" />
+        <label for="cardnumber">Card</label>
+      </div>
+      <div class="form-group">
+        <div class="form-control">
+          <input type="month" id="cardexpiry" name="cardexpiry" />
+          <label for="cardexpiry">Expiry</label>
+        </div>
+        <div class="form-control">
+          <input type="text" id="cardcvv" name="cardcvv" />
+          <label for="cardcvv">CVV</label>
+        </div>
+      </div>
+      <br />
+
+      <div class="form-control">
+        <input
+          type="text"
+          id="billingaddressstreet"
+          name="billingaddressstreet"
+        />
+        <label for="billingaddressstreet">Street Name</label>
+      </div>
+
+      <div class="form-group">
+        <div class="form-control">
+          <input
+            type="text"
+            id="billingaddresshousenumber"
+            name="billingaddresshousenumber"
+          />
+          <label for="billingaddresshousenumber">House Number</label>
+        </div>
+        <div class="form-control">
+          <input
+            type="text"
+            id="billingaddresspostalcode"
+            name="billingaddresspostalcode"
+          />
+          <label for="billingaddresspostalcode">Postal Code</label>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <select id="billingaddressstate" name="billingaddressstate">
+          <option value="lagos" selected={true}>Lagos</option>
+          <option value="kano">Kano</option>
+          <option value="katsina">Katsina</option>
+          <option value="bauchi">Bauchi</option>
+        </select>
+        <label for="billingaddressstate">State</label>
+      </div>
+
+      <div class="form-control">
+        <select id="billingaddresscountry" name="billingaddresscountry">
+          <option value="" disabled={true} selected={true}>
+            Select country
+          </option>
+
+          <option value="nigeria">Nigeria</option>
+        </select>
+        <label for="billingaddresscountry">Country</label>
+      </div>
+    </section>
+
+    <section class="booking-step-seven" id="seven">
+      <p>Please ensure all details are correct:</p>
+      <button type="submit">Submit booking</button>
+    </section>
+  </form>
+
+  <p id="stepInfo"></p>
+
+  <button type="button" id="navLeft">Previous</button>
+  <button type="button" id="navRight">Continue</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const stepInfo = document.getElementById("stepInfo");
+      const navLeft = document.getElementById("navLeft");
+      const navRight = document.getElementById("navRight");
+
+      const formSteps = ["one", "two", "three", "four", "five", "six", "seven"];
+
+      let currentStep = 0;
+
+      function updateStepVisibility() {
+        formSteps.forEach((step) => {
+          const section = document.getElementById(step);
+
+          if (section) {
+            section.style.display = "none";
+          }
+        });
+
+        const currentSection = document.getElementById(formSteps[currentStep]);
+
+        if (currentSection) {
+          currentSection.style.display = "block";
+        }
+
+        if (stepInfo) {
+          stepInfo.textContent = `Step ${currentStep + 1} of ${formSteps.length}`;
+        }
+
+        if (navLeft) {
+          navLeft.style.display = currentStep === 0 ? "none" : "block";
+        }
+
+        if (navRight) {
+          navRight.style.display =
+            currentStep === formSteps.length - 1 ? "none" : "block";
+        }
+      }
+
+      updateStepVisibility();
+
+      if (navRight) {
+        navRight.addEventListener("click", () => {
+          if (currentStep < formSteps.length - 1) {
+            currentStep++;
+            updateStepVisibility();
+          }
+        });
+      }
+
+      if (navLeft) {
+        navLeft.addEventListener("click", () => {
+          if (currentStep > 0) {
+            currentStep--;
+            updateStepVisibility();
+          }
+        });
+      }
+    });
+  </script>
+
+  <script>
+    import { createClient } from "@supabase/supabase-js";
+
+    const SUPABASE_URL = "https://vtahrkvhebwtjsdlxmkb.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0YWhya3ZoZWJ3dGpzZGx4bWtiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyMTU1MzgsImV4cCI6MjA5NDc5MTUzOH0.zlnBR7FddIdXQy3HjufW_uh3Z-E-r5K3zDlSldWax2E";
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById("bookingFlow") as HTMLFormElement;
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      const cardNumber = formData.get("cardnumber")?.toString() || "";
+
+      const booking = {
+        selectedmodel: formData.get("selectedmodel"),
+        selectedpowerups: formData.has("selectedpowerups"),
+
+        installationaddressstreet: formData.get("installationaddressstreet"),
+        installationaddresshousenumber: formData.get(
+          "installationaddresshousenumber",
+        ),
+        installationaddresspostalcode: formData.get(
+          "installationaddresspostalcode",
+        ),
+        installationaddressstate: formData.get("installationaddressstate"),
+        installationaddresscountry: formData.get("installationaddresscountry"),
+
+        installationdate: formData.get("installationdate"),
+        installationtime: formData.get("installationtime"),
+
+        forename: formData.get("forename"),
+        surname: formData.get("surname"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+
+        nameoncard: formData.get("nameoncard"),
+        cardnumber: formData.get("cardnumber"),
+        cardexpiry: formData.get("cardexpiry"),
+        cardcvv: formData.get("cardcvv"),
+
+        billingaddressstreet: formData.get("billingaddressstreet"),
+        billingaddresshousenumber: formData.get("billingaddresshousenumber"),
+        billingaddresspostalcode: formData.get("billingaddresspostalcode"),
+        billingaddressstate: formData.get("billingaddressstate"),
+        billingaddresscountry: formData.get("billingaddresscountry"),
+      };
+
+      const { error } = await supabase.from("bookings").insert(booking);
+
+      if (error) {
+        console.error(error);
+        alert("Something went wrong.");
+        return;
+      }
+
+      alert("Booking saved!");
+      form.reset();
+    });
+  </script>
+</Layout>
