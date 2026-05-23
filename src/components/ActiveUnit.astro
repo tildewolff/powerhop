@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+import editIconGreen from "../assets/edit_green.svg";
+
+interface Props {
+  unit?: string;
+  activeFrom?: string;
+  location?: string;
+  price?: string;
+  nextBillingDate?: string;
+  card?: string;
+  nextPaymentStatus?: string;
+}
+---
+
+<!-- <a
+  href={href}
+  target={target}
+  class={`btn ${variantClass} ${extraClass}`.trim()}
+>
+  {text}
+</a> -->
+<div
+  class="active-unit bg-light-bg border border-solid border-light-muted p-4 mb-4 mx-4"
+>
+  <h2 class="font-display text-4xl font-black pb-3">
+    {Astro.props.unit || "N/A"}
+  </h2>
+  <p class="font-mono pb-2">
+    Active From: <b>{Astro.props.activeFrom || "N/A"}</b>
+  </p>
+  <p class="font-mono pb-2">Location: <b>{Astro.props.location || "N/A"}</b></p>
+  <p class="font-mono pb-2">Price: <b>{Astro.props.price || "N/A"}</b></p>
+  <p class="font-mono pb-2">
+    Next Billing Date: <b>{Astro.props.nextBillingDate || "N/A"}</b>
+  </p>
+  <p class="font-mono pb-2">Card: <b>{Astro.props.card || "N/A"}</b></p>
+  <p class="font-mono pb-2">
+    Next Payment Status: <b>{Astro.props.nextPaymentStatus || "N/A"}</b>
+  </p>
+  <div class="flex gap-2 justify-end pt-2">
+    <img src={editIconGreen.src} alt="icon make change" />
+    <p class="font-sans text-brand underline italic">Make Change</p>
+  </div>
+</div>
