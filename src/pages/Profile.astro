@@ -1,55 +1,69 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ActiveUnit from "../components/ActiveUnit.astro";
+import editIcon from "../assets/edit_black.svg";
 ---
 
 <Layout Page="Profile" Title="Profile">
-  <h1>Hello Jane Doe!</h1>
-  <h3>Current active units:</h3>
-  <div class="activeUnit">
-    <h2>Power/Hop1000</h2>
-    <p>Active from May 10th 2026</p>
-    <p>Location: Placeholder Avenue 123, Lagos</p>
-    <p>₦24,000 / month</p>
-    <p>Next billing date: July 1st 2026</p>
-    <p>Card: **** **** **** 1234</p>
-    <p>Next payment status: Paid</p>
+  <h1 class="text-hero text-light-primary p-4 font-black font-display">
+    Hello Jane Doe!
+  </h1>
+  <div class="pageContentContainer">
+    <div class="currentlyActiveUnitsContainer">
+      <h3 class="text-lg text-light-primary p-4 font-sans tracking-widest">
+        CURRENTLY ACTIVE UNITS:
+      </h3>
+      <ActiveUnit
+        unit="Power/Hop1000"
+        activeFrom="May 10th 2026"
+        location="Placeholder Avenue 123, Lagos"
+        price="₦24,000 / month"
+        nextBillingDate="July 1st 2026"
+        card="**** **** **** 1234"
+        nextPaymentStatus="Paid"
+      />
+      <ActiveUnit
+        unit="Power/Hop2000"
+        activeFrom="June 21st 2026"
+        location="Another Street 42, Lagos"
+        price="₦36,000 / month"
+        nextBillingDate="July 1st 2026"
+        card="**** **** **** 5678"
+        nextPaymentStatus="Not paid"
+      />
+    </div>
     <div>
-      <img src="" alt="icon-make change" />
-      <p>Make Change</p>
+      <h3 class="text-lg text-light-primary p-4 font-sans tracking-widest">
+        PROFILE INFORMATION:
+      </h3>
+      <div id="profileInfoGrid" class="font-sans">
+        <p><b>Name</b> <br />Jane Doe</p>
+        <img class="place-self-center" src={editIcon.src} alt="icon-edit" />
+        <p><b>Phone</b> <br />+234 123 456 7890</p>
+        <img class="place-self-center" src={editIcon.src} alt="icon-edit" />
+        <p><b>E-mail</b> <br />jane.doe@example.com</p>
+        <img class="place-self-center" src={editIcon.src} alt="icon-edit" />
+        <p><b>Billing Address</b> <br />123 Placeholder Avenue, Lagos</p>
+        <img class="place-self-center" src={editIcon.src} alt="icon-edit" />
+        <p><b>Password</b> <br /> <u>Change password</u></p>
+        <img class="place-self-center" src={editIcon.src} alt="icon-edit" />
+      </div>
     </div>
   </div>
-  <div class="activeUnit">
-    <h2>Power/Hop2000</h2>
-    <p>Active from June 21st 2026</p>
-    <p>Location: Another Street 42, Lagos</p>
-    <p>₦36,000 / month</p>
-    <p>Next billing date: July 1st 2026</p>
-    <p>Card: **** **** **** 5678</p>
-    <p>Next payment status: Not paid</p>
-    <div>
-      <img src="" alt="icon-make change" />
-      <p>Make Change</p>
-    </div>
-  </div>
-  <h3>Profile information</h3>
-  <div>
-    <p><b>Name</b> <br />Jane Doe</p>
-    <img src="" alt="icon-edit" />
-  </div>
-  <div>
-    <p><b>Phone</b> <br />+234 123 456 7890</p>
-    <img src="" alt="icon-edit" />
-  </div>
-  <div>
-    <p><b>E-mail</b> <br />jane.doe@example.com</p>
-    <img src="" alt="icon-edit" />
-  </div>
-  <div>
-    <p><b>Billing Address</b> <br />123 Placeholder Avenue, Lagos</p>
-    <img src="" alt="icon-edit" />
-  </div>
-  <div>
-    <p><b>Password</b> <br /> <u>Change password</u></p>
-    <img src="" alt="icon-edit" />
-  </div>
+
+  <style>
+    #profileInfoGrid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      margin: 0 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .pageContentContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </Layout>
