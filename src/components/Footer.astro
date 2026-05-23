@@ -3,44 +3,122 @@
 ---
 
 <footer>
-  <div class="footer">
-    <div class="footerContact">
-      <p>WhatsApp:</p>
-      <p>+249 123 456 7890</p>
-    </div>
-    <div class="footerContact">
-      <p>Email:</p>
-      <p>power@hop.ng</p>
-    </div>
+  <div class="footer bg-dark-bg">
+    <div class="footerContent font-sans">
+      <div class="footerContact">
+        <p class="footerLabel text-dark-muted">WhatsApp:</p>
+        <p class="footerValue text-dark-primary">+249 123 456 7890</p>
+      </div>
 
-    <div class="footerLink">
-      <p>LINK</p>
-      <p>LINK</p>
+      <div class="footerContact font-sans">
+        <p class="footerLabel text-dark-muted">Email:</p>
+        <p class="footerValue text-dark-primary">power@hop.ng</p>
+      </div>
+
+      <nav class="footerLink text-dark-primary" aria-label="Footer links">
+        <a href="#">LINK</a>
+        <a href="#">LINK</a>
+      </nav>
+
+      <a
+        href="/index.html"
+        class="footerLogo text-dark-primary font-display font-black text-hero"
+        aria-label="PowerHop home"
+      >
+        <span>POWER</span><span>HOP</span>
+      </a>
+
+      <p class="copyright font-sans text-dark-muted text-sm">
+        &copy; 2026 PowerHop
+      </p>
     </div>
-    <div class="logo">[LOGO]</div>
-    <div class="copyright"><p>© 2026 PowerHop</p></div>
   </div>
 </footer>
 
 <style>
   .footer {
-    color: white;
-    background-color: black;
+    /* width: min(100%, 54.75rem); */
+    margin: 0 auto;
+    clip-path: polygon(0 0, 100% 20.5%, 100% 100%, 0 100%);
   }
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 12.5rem 4.5rem 3.6rem;
+    gap: 1rem;
+  }
+
   p {
     margin: 0;
   }
 
   .footerContact {
     display: grid;
-    grid-template-columns: auto;
-    /* gap: 0.5rem; */
+    gap: 0rem;
   }
 
-  .footer {
+  .footerLabel {
+    line-height: 2.2rem;
+  }
+
+  .footerValue {
+    line-height: 2.65rem;
+  }
+
+  .footerLink {
     display: grid;
-    grid-template-columns: auto;
-    gap: 1.5rem;
-    padding: 1rem;
+    margin-top: 0.1rem;
+  }
+
+  .footerLink a {
+    width: fit-content;
+    line-height: 2.35rem;
+    text-decoration: none;
+  }
+
+  .footerLogo {
+    width: fit-content;
+    margin-top: 3rem;
+    line-height: 0.82;
+    text-decoration: none;
+  }
+
+  .footerLogo span:last-child {
+    color: #008751;
+  }
+
+  .copyright {
+    letter-spacing: 0.2em;
+    line-height: 2rem;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    .footer {
+      clip-path: polygon(0 0, 100% 14%, 100% 100%, 0 100%);
+    }
+
+    .footerContent {
+      padding: 7.5rem 2rem 2.5rem;
+    }
+
+    .footerLabel {
+      line-height: 1.7rem;
+    }
+
+    .footerValue,
+    .footerLink a {
+      line-height: 2rem;
+    }
+
+    .footerLogo {
+      margin-top: 2rem;
+    }
+
+    .copyright {
+      letter-spacing: 0.18em;
+      line-height: 1.4rem;
+    }
   }
 </style>
