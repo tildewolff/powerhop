@@ -15,9 +15,10 @@ import "../styles/global.css";
     <title>PowerHop</title>
   </head>
   <body class="bg-light-surface">
+    <!-- header component -->
     <Header />
     <main class="site-main">
-      <!-- all pages get in here -->
+      <!-- all pages go in here -->
       <slot />
     </main>
     <!-- footer component -->
@@ -32,13 +33,15 @@ import "../styles/global.css";
       min-height: 100%;
     }
 
-    body {
+    /* body {
       display: flex;
       flex-direction: column;
-    }
+    } */
 
     .site-main {
       flex: 1;
+      max-width: 1200px;
+      margin: 2rem auto;
     }
   </style>
 </html>
