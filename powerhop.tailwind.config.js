@@ -179,7 +179,9 @@ export default {
         normal: "400", // Body text, descriptions
         medium: "500", // Labels, table headers, navigation
         semibold: "600", // Section headings, card titles, CTA buttons
-        // Note: 700+ is reserved for marketing display headings only
+        bold: "700", // 700+ is reserved for marketing display headings only
+        extrabold: "800", // Use only in the wordmark, never in UI elements
+        black: "900", // Use only in the wordmark, never in UI elements
       },
 
       // ── Border radius ─────────────────────────────────────────────────────
