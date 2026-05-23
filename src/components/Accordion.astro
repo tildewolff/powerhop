@@ -1,0 +1,51 @@
+---
+import "../styles/global.css";
+import arrow from "../assets/accordionArrow.svg";
+
+interface Props {
+  title?: string;
+  content?: string;
+}
+---
+
+<div class="py-1">
+  <div
+    class="accordionTitle font-mono text-lg text-brand-accent bg-dark-bg p-4 cursor-pointer flex justify-between"
+  >
+    <p>
+      {Astro.props.title}
+    </p>
+    <img id="arrow" src={arrow.src} alt="Arrow" />
+  </div>
+  <div class="accordionContent font-sans text-dark-primary p-4 bg-dark-border">
+    <p>{Astro.props.content}</p>
+  </div>
+</div>
+
+<style>
+  .accordionContent {
+    display: none;
+    overflow: hidden;
+  }
+
+  .accordionTitle.active #arrow {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".accordionTitle").forEach((accordionTitle) => {
+    accordionTitle.addEventListener("click", () => {
+      accordionTitle.classList.toggle("active");
+
+      const accordionContent = accordionTitle.nextElementSibling;
+
+      if (!(accordionContent instanceof HTMLElement)) {
+        return;
+      }
+
+      accordionContent.style.display =
+        accordionContent.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>

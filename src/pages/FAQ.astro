@@ -1,49 +1,118 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Accordion from "../components/Accordion.astro";
 ---
 
 <Layout Page="FAQ" Title="FAQ">
-  <h1>How to get started:</h1>
-  <div id="stepByStep">
-    <div class="grid_step">
-      <p>01</p>
-      <div>
-        <h3>Choose your POWER/HOP model</h3>
-        <p>
-          Choose the POWER/HOP model that is best suited for your need and
-          follow the steps in the purchase flow
-        </p>
+  <section class="how-to-section pb-16">
+    <h1 class="text-hero p-4 font-display font-black text-light-primary">
+      How to get started:
+    </h1>
+    <div id="stepByStep">
+      <div class="grid_step">
+        <p class="font-mono text-brand pt-1">01</p>
+        <div>
+          <h3 class="text-2xl text-light-primary font-sans tracking-widest">
+            Choose your POWER/HOP model
+          </h3>
+          <p class="font-sans text-light-secondary text-md pt-1">
+            Choose the POWER/HOP model that is best suited for your need and
+            follow the steps in the purchase flow
+          </p>
+        </div>
+      </div>
+      <div class="grid_step">
+        <p class="font-mono text-brand pt-1">02</p>
+        <div>
+          <h3 class="text-2xl text-light-primary font-sans tracking-widest">
+            Choose a date for the installation
+          </h3>
+          <p class="font-sans text-light-secondary text-md pt-1">
+            In the purchase flow, you will choose an available date and time for
+            the installation. You will be contacted by our team before the
+            installation
+          </p>
+        </div>
+      </div>
+      <div class="grid_step">
+        <p class="font-mono text-brand pt-1">03</p>
+        <div>
+          <h3 class="text-2xl text-light-primary font-sans tracking-widest">
+            You're all set!
+          </h3>
+          <p class="font-sans text-light-secondary text-md pt-1">
+            After the installation, the unit is ready for use. You can control
+            your new unit with the app.
+          </p>
+        </div>
       </div>
     </div>
-    <div class="grid_step">
-      <p>02</p>
-      <div>
-        <h3>Choose a date for the installation</h3>
-        <p>
-          In the purchase flow, you will choose an available date and time for
-          the installation. You will be contacted by our team before the
-          installation
-        </p>
-      </div>
-    </div>
-    <div class="grid_step">
-      <p>03</p>
-      <div>
-        <h3>You're all set!</h3>
-        <p>
-          After the installation, the unit is ready for use. You can control
-          your new unit with the app.
-        </p>
-      </div>
+  </section>
+  <div class="p-4 pt-0">
+    <h2 class="text-4xl pb-4 font-display font-black text-light-primary">
+      Frequently Asked Questions:
+    </h2>
+    <div>
+      <Accordion
+        title="What if my unit breaks down?"
+        content="If your unit breaks down, please contact our support team immediately. We will arrange for a technician to visit your location and repair or replace the unit as needed - with no additional cost to you."
+      />
+      <Accordion
+        title="How do I reset my unit?"
+        content="To reset your unit, please follow these steps: 1) Turn off the unit. 2) Wait for 30 seconds. 3) Turn the unit back on."
+      />
+      <Accordion
+        title="Which payment methods do you accept?"
+        content="We accept Visa, Mastercard, and Amex cards."
+      />
+      <Accordion
+        title="Can I have a unit installed in a location that is not my home?"
+        content="Yes, we can install a unit in a location that is not your home, as long as it is accessible and meets our installation requirements."
+      />
     </div>
   </div>
-  <h2>Frequently Asked Questions:</h2>
-  <div>
-    <p>[accoriion]</p>
-    <p>[accoriion]</p>
-    <p>[accoriion]</p>
-    <p>[accoriion]</p>
+  <div class="p-4">
+    <h2 class="text-4xl font-display font-black text-light-primary">
+      Any unanswered questions? We're happy to clarify.
+    </h2>
+    <p class="font-sans text-light-primary py-4">
+      WhatsApp: +249 123 456 7890 <br />E-mail: power@hop.ng
+    </p>
   </div>
-  <h2>Any unanswered questions? We're happy to clarify.</h2>
-  <p>WhatsApp: +249 123 456 7890 <br />E-mail: power@hop.ng</p>
 </Layout>
+
+<style>
+  .how-to-section {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 4rem;
+  }
+
+  .how-to-section::before {
+    position: absolute;
+    inset: 5.5rem 0 0;
+    z-index: -1;
+    background: #e0f3eb;
+    clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+    translate: 0 -10%;
+    content: "";
+  }
+
+  .grid_step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    margin: 0 1rem 2rem 1rem;
+  }
+
+  @media (min-width: 768px) {
+    #stepByStep {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .how-to-section {
+      padding-bottom: 1rem;
+    }
+  }
+</style>
