@@ -5,27 +5,27 @@ import "../styles/global.css";
 <footer>
   <div class="footer bg-dark-bg">
     <div class="footerContent font-sans">
-      <div class="footerContact">
-        <p class="footerLabel text-dark-muted">WhatsApp:</p>
-        <p class="footerValue text-dark-primary">+249 123 456 7890</p>
+      <div class="footerContact font-sans text-lg">
+        <p class="footerLabel text-dark-muted mb-2">WhatsApp:</p>
+        <p class="footerValue text-dark-primary mb-4">+249 123 456 7890</p>
       </div>
 
-      <div class="footerContact font-sans">
-        <p class="footerLabel text-dark-muted">Email:</p>
+      <div class="footerContact font-sans text-lg">
+        <p class="footerLabel text-dark-muted mb-2">Email:</p>
         <p class="footerValue text-dark-primary">power@hop.ng</p>
       </div>
-
+      <!-- 
       <nav class="footerLink text-dark-primary" aria-label="Footer links">
         <a href="#">LINK</a>
         <a href="#">LINK</a>
-      </nav>
+      </nav> -->
 
       <a
         href="/index.html"
-        class="footerLogo text-dark-primary font-display font-black text-hero"
+        class="footerLogo text-dark-primary font-display font-black text-hero mt-10"
         aria-label="PowerHop home"
       >
-        <span>POWER</span><span>HOP</span>
+        POWER<span class="text-brand">HOP</span>
       </a>
 
       <p class="copyright font-sans text-dark-muted text-sm">
@@ -37,7 +37,6 @@ import "../styles/global.css";
 
 <style>
   .footer {
-    /* width: min(100%, 54.75rem); */
     margin: 0 auto;
     clip-path: polygon(0 0, 100% 20.5%, 100% 100%, 0 100%);
   }
@@ -45,25 +44,13 @@ import "../styles/global.css";
   .footerContent {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    padding: 12.5rem 4.5rem 3.6rem;
+    padding: 7.5rem 4.5rem 3.6rem;
     gap: 1rem;
-  }
-
-  p {
-    margin: 0;
   }
 
   .footerContact {
     display: grid;
     gap: 0rem;
-  }
-
-  .footerLabel {
-    line-height: 2.2rem;
-  }
-
-  .footerValue {
-    line-height: 2.65rem;
   }
 
   .footerLink {
@@ -79,13 +66,8 @@ import "../styles/global.css";
 
   .footerLogo {
     width: fit-content;
-    margin-top: 3rem;
     line-height: 0.82;
     text-decoration: none;
-  }
-
-  .footerLogo span:last-child {
-    color: #008751;
   }
 
   .copyright {
