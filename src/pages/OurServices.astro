@@ -1,61 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";
+import ProductComparisonTable from "../components/ProductComparisonTable.astro";
+import ProductCard from "../components/ProductCard.astro";
 import "../styles/global.css";
+import powerhop1000 from "../assets/powerhop1000/front-1000-png.png";
+import powerhop2000 from "../assets/powerhop2000/front-2000-png.png";
+import powerhop8000 from "../assets/powerhop8000/front-8000-png.png";
 ---
 
 <Layout Page="OurServices" Title="Our Services">
   <h1>Power/Hop series</h1>
-  <img src="" alt="" />
-  <div>
-    <p>Power/Hop1000</p>
-    <p>Power/Hop2000</p>
-    <p>Usable power <br />1,000 Wh</p>
-    <p>2,000 Wh</p>
-    <p>Surge protect. <br />1,000 W</p>
-    <p>2,000 W</p>
-    <p>Inverter <br />500 W</p>
-    <p>1,000 W</p>
-    <p>Charging time <br />~4H</p>
-    <p>~4H</p>
-    <p>AC input <br />90-260 v</p>
-    <p>90-260 v</p>
-    <p>battery <br />LiFePO₄</p>
-    <p>LiFePO₄</p>
-    <p>Lifespan <br />3,000+ cycles</p>
-    <p>3,000+ cycles</p>
+
+  <ProductComparisonTable />
+
+  <div class="productcardlist">
+    <ProductCard
+      name="Power/Hop1000"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci nec nunc sollicitudin venenatis."
+      image={powerhop1000}
+      link="ProductPage1000"
+    />
+    <ProductCard
+      name="Power/Hop2000"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci nec nunc sollicitudin venenatis."
+      image={powerhop2000}
+      link="ProductPage2000"
+    />
+    <ProductCard
+      name="Power/Hop8000"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci nec nunc sollicitudin venenatis."
+      image={powerhop8000}
+      link="ProductPage8000"
+    />
   </div>
-  <div>
-    <img src="" alt="" />
-    <h3>Power/Hop1000</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
-      orci nec nunc sollicitudin venenatis.
-    </p>
-    <Button href="link..." variant={1} text="POWER/HOP1000 →" />
-  </div>
-  <div>
-    <img src="" alt="" />
-    <h3>Power/Hop2000</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
-      orci nec nunc sollicitudin venenatis.
-    </p>
-    <Button href="link..." variant={1} text="POWER/HOP2000 →" />
-  </div>
-  <div>
-    <img src="" alt="" />
-    <h3>Power/Hop8000</h3>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
-      orci nec nunc sollicitudin venenatis.
-    </p>
-    <Button href="link..." variant={1} text="POWER/HOP8000 →" />
-  </div>
-  <h2>Need a hand?</h2>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci
-    nec nunc sollicitudin venenatis.
-  </p>
-  <Button href="link..." variant={3} text="Help →" />
 </Layout>
+
+<style>
+  .productcardlist {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 42rem) {
+    .productcardlist {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .productcardlist {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

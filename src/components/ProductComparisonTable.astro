@@ -1,0 +1,167 @@
+---
+const Page = Astro.props.Page;
+---
+
+<!-- Two-column comparison grid: every direct child becomes one table cell. -->
+<div class="comparisontable">
+  <!-- Product headers for the two models being compared. -->
+  <h3 class="productname">POWER/HOP1000</h3>
+  <h3 class="productname">POWER/HOP2000</h3>
+
+  <!-- Each spec row uses a labelled left cell and a matching value on the right. -->
+  <div>
+    <p class="productstattitle">USABLE POWER</p>
+    <p>1000 WH</p>
+  </div>
+  <p>2000 WH</p>
+  <div>
+    <p class="productstattitle">SURGE PROTECTION</p>
+    <p>1000 WH</p>
+  </div>
+  <p>2000 WH</p>
+  <div>
+    <p class="productstattitle">INVERTER</p>
+    <p>500 WH</p>
+  </div>
+  <p>1000 WH</p>
+  <div>
+    <p class="productstattitle">CHARGING TIME</p>
+    <p>~4H</p>
+  </div>
+  <p>~4H</p>
+  <div>
+    <p class="productstattitle">AC INPUT</p>
+    <p>90-260 V</p>
+  </div>
+  <p>90-260 V</p>
+  <div>
+    <p class="productstattitle">BATTERY</p>
+    <p>LIFEPO₄</p>
+  </div>
+  <p>LIFEPO₄</p>
+  <div>
+    <p class="productstattitle">LIFESPAN</p>
+    <p>3000+ CYCLES</p>
+  </div>
+  <p>3000+ CYCLES</p>
+</div>
+
+<style>
+  /* The wrapper acts like a simple table using CSS grid instead of <table>. */
+  .comparisontable {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 46rem);
+    border-top: 1px solid #9f9f9f;
+    border-left: 1px solid #9f9f9f;
+    background: #ffffff;
+    color: #111111;
+  }
+
+  /* Shared cell styling: borders are built from right/bottom lines on each cell. */
+  .comparisontable > * {
+    min-height: 4.15rem;
+    margin: 0;
+    border-right: 1px solid #9f9f9f;
+    border-bottom: 1px solid #9f9f9f;
+    padding: 0.7rem 1.25rem;
+  }
+
+  /* Right-side value-only cells sit near the bottom like in the reference design. */
+  .comparisontable > p {
+    display: flex;
+    align-items: end;
+  }
+
+  /* Left-side cells contain both a muted label and the value below it. */
+  .comparisontable > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .comparisontable p {
+    margin: 0;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  /* Product names use the display font so they feel like PowerHop headings. */
+  .productname {
+    display: flex;
+    align-items: center;
+    font-family: "Barlow Condensed", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .productname::first-letter {
+    letter-spacing: 0;
+  }
+
+  .productname {
+    color: #111111;
+  }
+
+  .productname::after {
+    color: #008751;
+  }
+
+  .productname:nth-child(1),
+  .productname:nth-child(2) {
+    letter-spacing: -0.01em;
+  }
+
+  /* These pseudo-elements color only the model number green. */
+  .productname:nth-child(1) {
+    font-size: 0;
+  }
+
+  .productname:nth-child(1)::before {
+    content: "POWER/HOP";
+    color: #111111;
+    font-size: 24px;
+  }
+
+  .productname:nth-child(1)::after {
+    content: "1000";
+    color: #008751;
+    font-size: 24px;
+  }
+
+  .productname:nth-child(2) {
+    font-size: 0;
+  }
+
+  .productname:nth-child(2)::before {
+    content: "POWER/HOP";
+    color: #111111;
+    font-size: 24px;
+  }
+
+  .productname:nth-child(2)::after {
+    content: "2000";
+    color: #008751;
+    font-size: 24px;
+  }
+
+  /* Spec labels are lighter than values to create the visual hierarchy. */
+  .productstattitle {
+    margin-bottom: 0.25rem;
+    color: #9b9b9b;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  /* Keep the table readable on very narrow screens. */
+  @media (max-width: 24rem) {
+    .comparisontable > * {
+      padding: 0.65rem 0.8rem;
+    }
+  }
+</style>
