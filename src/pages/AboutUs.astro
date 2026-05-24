@@ -1,44 +1,133 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import JackBird from "../assets/JackBird.webp";
+import JaneDoe from "../assets/JaneDoe.webp";
+import JoanneWolf from "../assets/JoannaWolf.webp";
+import JonasFish from "../assets/JonasFish.webp";
+import OurTeam from "../assets/ourTeam.webp";
 ---
 
 <Layout Page="AboutUs" Title="About Us">
-  <h1>Not just a provider, but a partner</h1>
-  <img src="" alt="Our team" />
-  <p>
+  <section class="about-hero" aria-labelledby="about-hero-title">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[52%] bg-[linear-gradient(170deg,_rgba(247,247,247,1)_0%,_rgba(247,247,247,0.95)_42%,_rgba(247,247,247,0)_76%)]"
+    >
+    </div>
+    <h1
+      id="about-hero-title"
+      class="about-hero-title text-hero font-black font-display text-light-primary m-6"
+    >
+      Not just a provider, but a partner<span class="text-brand">.</span>
+    </h1>
+
+    <div class="about-hero-image">
+      <img src={OurTeam.src} alt="Our team" />
+    </div>
+  </section>
+  <p class="text-lg text-light-secondary font-sans m-6">
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, saepe!
     Nesciunt voluptates ullam facilis labore expedita odio excepturi alias quod,
     voluptatum ipsum quas vitae repellat!
   </p>
   <div>
-    <h3>Meet the team!</h3>
-    <div class="grid_1-1">
+    <h3
+      class="font-sans capitalize text-light-primary text-2xl tracking-widest mx-6 mt-10"
+    >
+      MEET THE TEAM!
+    </h3>
+    <div
+      class="mx-6 mt-6 mb-18 grid grid-cols-[minmax(100px,_250px)_minmax(100px,_250px)] gap-6 md:grid-cols-[minmax(100px,_250px)_minmax(100px,_250px)_minmax(100px,_250px)] lg:grid-cols-[minmax(100px,_200px)_minmax(100px,_200px)_minmax(100px,_200px)_minmax(100px,_200px)]"
+    >
       <div class="employee">
-        <img class="employeeImg" src="" alt="Jane Doe" />
-        <p class="employeeName">Jane Doe</p>
-        <p class="employeeTitle">Manager</p>
+        <img class="h-48 object-cover mb-4" src={JaneDoe.src} alt="Jane Doe" />
+        <p class="font-mono text-light-primary capitalize text-2xl">Jane Doe</p>
+        <p class="font-mono text-brand capitalize text-lg mb-4">Manager</p>
       </div>
       <div class="employee">
-        <img class="employeeImg" src="" alt="Jack Bird" />
-        <p class="employeeName">Jack Bird</p>
-        <p class="employeeTitle">Engineer</p>
+        <img
+          class="h-48 object-cover mb-4"
+          src={JackBird.src}
+          alt="Jack Bird"
+        />
+        <p class="font-mono text-light-primary capitalize text-2xl">
+          Jack Bird
+        </p>
+        <p class="font-mono text-brand capitalize text-lg mb-4">Engineer</p>
       </div>
       <div class="employee">
-        <img class="employeeImg" src="" alt="Jonas Fish" />
-        <p class="employeeName">Jonas Fish</p>
-        <p class="employeeTitle">Repairman</p>
+        <img
+          class="h-48 object-cover mb-4"
+          src={JonasFish.src}
+          alt="Jonas Fish"
+        />
+        <p class="font-mono text-light-primary capitalize text-2xl">
+          Jonas Fish
+        </p>
+        <p class="font-mono text-brand capitalize text-lg mb-4">Repairman</p>
       </div>
       <div class="employee">
-        <img class="employeeImg" src="" alt="Joanne Wolf" />
-        <p class="employeeName">Joanne Wolf</p>
-        <p class="employeeTitle">Customer support</p>
+        <img
+          class="h-48 object-cover mb-4"
+          src={JoanneWolf.src}
+          alt="Joanne Wolf"
+        />
+        <p class="font-mono text-light-primary capitalize text-2xl">
+          Joanne Wolf
+        </p>
+        <p class="font-mono text-brand capitalize text-lg mb-4">
+          Customer support
+        </p>
       </div>
     </div>
   </div>
-  <h2>Want to join our mission?</h2>
-  <p>
+  <h2 class="text-hero font-black font-display m-6">
+    <span text-light-primary>Want to join our mission</span><span
+      class="text-brand">?</span
+    >
+  </h2>
+  <p class="text-lg text-light-secondary font-sans m-6">
     We're always looking to expand our team of professionals. If you think you
     would fit in, feel free to reach out or send an application with your CV.
   </p>
-  <p>WhatsApp: +249 123 456 7890 <br />E-mail: power@hop.ng</p>
+  <p class="text-lg text-light-secondary font-sans m-6">
+    WhatsApp: +249 123 456 7890 <br />E-mail: power@hop.ng
+  </p>
 </Layout>
+
+<style>
+  .about-hero {
+    position: relative;
+    min-height: clamp(36rem, 78vw, 58rem);
+    overflow: hidden;
+    background: #f7f7f7;
+    isolation: isolate;
+  }
+
+  .about-hero-title {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-hero-image {
+    position: absolute;
+    inset: 19% 0 0;
+    z-index: 0;
+    clip-path: polygon(0 18%, 100% 0, 100% 78%, 0 100%);
+  }
+
+  .about-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  @media (max-width: 700px) {
+    .about-hero-image {
+      inset: 20% 0 0;
+      clip-path: polygon(0 12%, 100% 0, 100% 84%, 0 100%);
+    }
+  }
+</style>
