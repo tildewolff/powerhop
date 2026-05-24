@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProductCarousel from "../components/ProductCarousel.astro";
+import frontImage from "../assets/powerhop8000/front-8000-png.png";
+import faceImage from "../assets/powerhop8000/face-8000-png.png";
+import backImage from "../assets/powerhop8000/back-8000-png.png";
+
+const carouselImages = [
+  {
+    src: frontImage,
+    alt: "Front view of Power/Hop8000",
+  },
+  {
+    src: faceImage,
+    alt: "Face view of Power/Hop8000",
+  },
+  {
+    src: backImage,
+    alt: "Back view of Power/Hop8000",
+  },
+];
+---
+
+<Layout Page="Product Page" Title="Product Page">
+  <ProductCarousel images={carouselImages} />
+</Layout>
