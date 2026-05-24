@@ -12,14 +12,14 @@ const Page = Astro.props.Page;
     <div id="mobileAlwaysVisible">
       <a
         href="/index.html"
-        class="mobileClosedLogo text-hero font-display font-black"
+        class="mobileClosedLogo text-4xl font-display font-black"
         aria-label="PowerHop home"
       >
         <span>POWER</span><span>HOP</span>
       </a>
       <a
         href="/index.html"
-        class="mobileOpenLogo text-hero font-display font-black"
+        class="mobileOpenLogo text-4xl font-display font-black"
         aria-label="PowerHop home"
       >
         <span>POWER</span><span>HOP</span>
@@ -42,27 +42,27 @@ const Page = Astro.props.Page;
     <nav id="mobileMenu" class="hidden">
       <a
         href="/index.html"
-        class=`font-display text-brand font-black text-hero ${Page==="Home" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl ${Page==="Home" ? 'active':''}`
         >Home</a
       >
       <a
         href="/OurServices"
-        class=`font-display text-brand font-black text-hero${Page==="OurServices" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl${Page==="OurServices" ? 'active':''}`
         >Our services</a
       >
       <a
         href="/AboutUs"
-        class=`font-display text-brand font-black text-hero${Page==="AboutUs" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl${Page==="AboutUs" ? 'active':''}`
         >About us</a
       >
       <a
         href="/FAQ"
-        class=`font-display text-brand font-black text-hero${Page==="FAQ" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl${Page==="FAQ" ? 'active':''}`
         >FAQ</a
       >
       <a
         href="/Profile"
-        class=`font-display text-brand font-black text-hero${Page==="Profile" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl${Page==="Profile" ? 'active':''}`
         >Log in</a
       >
     </nav>
@@ -176,7 +176,7 @@ const Page = Astro.props.Page;
       display: grid;
       place-items: center;
       width: 4rem;
-      height: 3.5rem;
+      height: 1rem;
       padding: 0;
       border: 0;
       background: transparent;
@@ -185,8 +185,8 @@ const Page = Astro.props.Page;
 
     .hamburger span {
       grid-area: 1 / 1;
-      width: 3.9rem;
-      height: 0.4rem;
+      width: 2.75rem;
+      height: 0.3rem;
       border-radius: 999px;
       background: #008751;
       transition:
@@ -221,14 +221,14 @@ const Page = Astro.props.Page;
 
     @media (max-width: 767px) {
       header.mobile-menu-open {
-        background: #000000;
+        background: #0a0a0a;
         border-bottom: 0;
         /* shape the angled bottom: */
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 86px));
       }
 
       header.mobile-menu-open #mobileAlwaysVisible {
-        border-bottom: 1px solid #aaaaaa;
+        border-bottom: 1px solid #e0e0e0;
       }
 
       header.mobile-menu-open .mobileClosedLogo {
@@ -252,7 +252,7 @@ const Page = Astro.props.Page;
       }
 
       header.mobile-menu-open #mobileMenu a {
-        color: white;
+        color: #f5f5f5;
       }
 
       header.mobile-menu-open #mobileMenu a:last-child {

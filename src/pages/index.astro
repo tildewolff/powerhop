@@ -1,54 +1,105 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
+import Accordion from "../components/Accordion.astro";
+import heroImg from "../assets/hero-img.webp";
+import Arrow from "../assets/accordionArrow.svg";
 import "../styles/global.css";
 ---
 
 <Layout Page="Home" Title="Home">
-  <a href="/Booking.html">Booking</a>
-  <h1 class="font-display text-hero">
-    The next chapter of accessible at-home energy.
-  </h1>
-  <img class="heroImg" src="" alt="" />
-  <!-- temporary non functional link, CHANGE WHEN READY -->
-  <Button href="link..." variant={2} text="Discover POWER/HOP1000 →" />
-  <div>
-    <h2>Our solution to unreliable grids.</h2>
-    <p>POWER/HOP series</p>
-    <img src="" alt="" />
+  <div id="heroSection" class="flex flex-col justify-center pt-16 pb-8">
+    <h1
+      class="font-display text-huge text-dark-primary font-black text-right p-6"
+    >
+      The next chapter of accessible at-home energy.
+    </h1>
+    <!-- !!! temporary link, CHANGE WHEN READY !!! -->
+    <Button
+      class="mx-6 my-12"
+      href="/OurServices"
+      variant={2}
+      text="Discover POWER/HOP1000 →"
+    />
+    <img class="w-8 place-self-center pb-6" src={Arrow.src} alt="scroll down" />
   </div>
-  <div>
-    <h2>Introducing the POWER/HOP series:</h2>
-    <p>
+  <Button
+    class="mx-6 my-12"
+    href="/Booking"
+    variant={1}
+    text="Booking (temporary button!) →"
+  />
+  <div id="discoverSection" class="m-6">
+    <h2 class="font-display text-light-primary text-4xl font-black">
+      Our solution to unreliable grids.
+    </h2>
+    <p class="font-sans text-brand text-lg font-bold tracking-widest">
+      POWER/HOP series
+    </p>
+  </div>
+  <div class="m-6 bg-light-bg p-6 border border-light-subtle">
+    <h2 class="font-display text-light-primary text-4xl font-black">
+      Introducing the POWER/HOP series:
+    </h2>
+    <p class="font-sans text-light-secondary text-md py-4">
       Compact, quiet and powerful, the PowerHop power units switch on as soon as
       your grid fails, offering uninterrupted electricity for your most vital
       appliances and tools. And when the power comes back on? The unit recharges
-      over the course of 4 hours, ready for the next outage. <br />With models
-      providing either 1,000, 2,000 or 8,000 Wh of maximum stored power
-      respectively, there is an affordable solution to every need.
+      over the course of 4 hours, ready for the next outage. <br />
+      <br /> With models providing either 1,000, 2,000 or 8,000 Wh of maximum stored
+      power respectively, there is an affordable solution to every need.
     </p>
-    <Button href="link..." variant={1} text="Models →" />
+    <div class="pt-2">
+      <Button href="/OurServices" variant={1} text="Models →" />
+    </div>
   </div>
-  <div>
-    <h3>₦0 STARTUP COST</h3>
-    <p>
-      No deposit, no big purchase. Pay from ₦24,000 monthly, with no sudden
-      surprise fees or bills.
-    </p>
-    <h3>PAUSE AT ANY TIME</h3>
-    <p>
-      Not convenient this month? No problem. Pause your subscription at any time
-      for no additional fee.
-    </p>
-    <h3>48H SWAP GUARANTEE</h3>
-    <p>
-      No maintenance cost. We detect battery degradation remotely, ensuring
-      quick replacements and no dark days for you.
-    </p>
+  <div class="m-6 md:grid-cols-3 grid md:gap-12 mx-12 mt-12 mb-8">
+    <div>
+      <h3
+        class="font-sans capitalize text-right text-light-primary text-2xl tracking-widest"
+      >
+        ₦0 STARTUP COST
+      </h3>
+      <p class="pt-3 pb-6 font-sans text-light-secondary text-md">
+        No deposit, no big purchase. Pay from ₦24,000 monthly, with no sudden
+        surprise fees or bills.
+      </p>
+    </div>
+    <div>
+      <h3
+        class="font-sans capitalize text-right text-light-primary text-2xl tracking-widest"
+      >
+        PAUSE AT ANY TIME
+      </h3>
+      <p class="pt-3 pb-6 font-sans text-light-secondary text-md">
+        Not convenient this month? No problem. Pause your subscription at any
+        time for no additional fee.
+      </p>
+    </div>
+    <div>
+      <h3
+        class="font-sans capitalize text-right text-light-primary text-2xl tracking-widest"
+      >
+        48H SWAP GUARANTEE
+      </h3>
+      <p class="pt-3 pb-6 font-sans text-light-secondary text-md">
+        No maintenance cost. We detect battery degradation remotely, ensuring
+        quick replacements and no dark days for you.
+      </p>
+    </div>
   </div>
-  <p>[accorion]</p>
-  <div>
-    <h2>Fulfilling real needs for real Nigerians.</h2>
+  <div class="m-6">
+    <Accordion
+      title="What am I used for?"
+      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis, consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat pharetra. Fusce eget ante convallis, congue est placerat, bibendum justo."
+    />
+  </div>
+  <div class="p-6 bg-dark-bg text-dark-primary">
+    <h2
+      class="font-display text-4xl text-dark-primary font-black pb-4 text-right"
+    >
+      Fulfilling real needs for real Nigerians.
+    </h2>
     <div>
       <div>
         <p>[dot] oshodi-isolo, lagos</p>
@@ -62,14 +113,28 @@ import "../styles/global.css";
       </div>
     </div>
   </div>
-  <h2>Not just a provider, but a partner.</h2>
-  <img src="" alt="" />
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci
-    nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu eleifend.
-    Suspendisse ac elit nunc. Maecenas ut urna facilisis, consectetur nisi eu,
-    molestie mi. Nunc non ligula auctor dui placerat pharetra. Fusce eget ante
-    convallis, congue est placerat, bibendum justo.
-  </p>
-  <Button href="link..." variant={1} text="About us →" />
+  <div class="p-6">
+    <h2 class="font-display text-4xl text-light-primary font-black pb-4">
+      Not just a provider, but a partner.
+    </h2>
+    <img src="" alt="" />
+    <p class="font-sans text-light-secondary text-md pb-6">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
+      orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu
+      eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis,
+      consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat
+      pharetra. Fusce eget ante convallis, congue est placerat, bibendum justo.
+    </p>
+    <Button href="/AboutUs" variant={1} text="About us →" />
+  </div>
 </Layout>
+
+<style>
+  #heroSection {
+    background-image: url("src/assets/hero-img.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1a1a1a; /* Fallback color */
+  }
+</style>
