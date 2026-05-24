@@ -171,7 +171,7 @@ export default {
         "3xl": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em" }],
         "4xl": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em" }],
         // Marketing scale (Shopify Storefront / Customer Webapp hero)
-        hero: ["48px", { lineHeight: "54px", letterSpacing: "-0.03em" }],
+        hero: ["48px", { lineHeight: "54px", letterSpacing: "-0.02" }],
         huge: ["64px", { lineHeight: "72px", letterSpacing: "0" }],
       },
 

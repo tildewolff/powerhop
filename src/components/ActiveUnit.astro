@@ -14,9 +14,9 @@ interface Props {
 ---
 
 <div
-  class="active-unit bg-light-bg border border-solid border-light-muted p-4 mb-4 mx-4"
+  class="active-unit bg-light-bg border border-solid border-light-muted p-6 mb-6 mx-6"
 >
-  <h2 class="font-display text-4xl font-black pb-3">
+  <h2 class="font-display text-4xl font-black pb-4">
     {Astro.props.unit || "N/A"}
   </h2>
   <p class="font-mono pb-2">
@@ -31,7 +31,7 @@ interface Props {
   <p class="font-mono pb-2">
     Next Payment Status: <b>{Astro.props.nextPaymentStatus || "N/A"}</b>
   </p>
-  <div class="flex gap-2 justify-end pt-2">
+  <div class="flex gap-2 justify-end pt-3">
     <img src={editIconGreen.src} alt="icon make change" />
     <p class="font-sans text-brand underline italic text-base">Make Change</p>
   </div>

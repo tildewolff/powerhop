@@ -5,8 +5,8 @@ import Accordion from "../components/Accordion.astro";
 
 <Layout Page="FAQ" Title="FAQ">
   <section class="how-to-section pb-16">
-    <h1 class="text-hero p-4 font-display font-black text-light-primary">
-      How to get started:
+    <h1 class="text-hero m-6 font-display font-black text-light-primary">
+      How to get started<span class="text-brand">.</span>
     </h1>
     <div id="stepByStep">
       <div class="grid_step">
@@ -48,9 +48,9 @@ import Accordion from "../components/Accordion.astro";
       </div>
     </div>
   </section>
-  <div class="p-4 pt-0">
+  <div class="m-6 pt-0">
     <h2 class="text-4xl pb-4 font-display font-black text-light-primary">
-      Frequently Asked Questions:
+      Frequently Asked Questions<span class="text-brand">:</span>
     </h2>
     <div>
       <Accordion
@@ -71,11 +71,13 @@ import Accordion from "../components/Accordion.astro";
       />
     </div>
   </div>
-  <div class="p-4">
+  <div class="mx-6 mt-8">
     <h2 class="text-4xl font-display font-black text-light-primary">
-      Any unanswered questions? We're happy to clarify.
+      Any unanswered questions? <span class="text-brand"
+        >We're happy to clarify.</span
+      >
     </h2>
-    <p class="font-sans text-light-primary py-4">
+    <p class="font-sans text-light-secondary py-4">
       WhatsApp: +249 123 456 7890 <br />E-mail: power@hop.ng
     </p>
   </div>
@@ -102,7 +104,7 @@ import Accordion from "../components/Accordion.astro";
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1rem;
-    margin: 0 1rem 2rem 1rem;
+    margin: 0 1.5rem 2rem 1.5rem;
   }
 
   @media (min-width: 768px) {
