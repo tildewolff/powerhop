@@ -1,0 +1,198 @@
+---
+import "../styles/global.css";
+import Img1 from "../assets/testimonials/ChatGPT_Image_Apr_27_2026_08_51_14_AM.webp";
+import Img2 from "../assets/testimonials/ChatGPT_Image_Apr_27_2026_08_51_19_AM.webp";
+import Img3 from "../assets/testimonials/ChatGPT_Image_Apr_27_2026_08_51_45_AM.webp";
+import Img4 from "../assets/testimonials/ChatGPT_Image_Apr_27_2026_09_39_02_AM.webp";
+
+interface Props {
+  city?: string;
+  country?: string;
+  quote?: string;
+  name?: string;
+  occupation?: string;
+  testimonials?: {
+    city: string;
+    country: string;
+    quote: string;
+    name: string;
+    occupation: string;
+    image?: string;
+  }[];
+}
+
+const testimonialImages = [Img1.src, Img2.src, Img3.src, Img4.src];
+
+const fallbackTestimonials = [
+  {
+    city: Astro.props.city || "Lagos",
+    country: Astro.props.country || "Nigeria",
+    quote: Astro.props.quote || "...",
+    name: Astro.props.name || "Anonymous",
+    occupation: Astro.props.occupation || "N/A",
+    image: testimonialImages[0],
+  },
+];
+
+const testimonialContent = Astro.props.testimonials?.length
+  ? Astro.props.testimonials
+  : fallbackTestimonials;
+
+const testimonials = testimonialContent.map((testimonial, index) => ({
+  ...testimonial,
+  image:
+    testimonial.image || testimonialImages[index % testimonialImages.length],
+}));
+---
+
+<div
+  id="fullContainer"
+  class="relative"
+  data-testimonials-carousel
+  data-testimonials={JSON.stringify(testimonials)}
+>
+  <button
+    class="absolute -left-3 top-1/2 z-20 hidden -translate-y-1/2 text-dark-primary transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand md:block"
+    type="button"
+    aria-label="Previous testimonial"
+    data-testimonials-prev
+  >
+    <span class="block text-hero leading-none">&lt;</span>
+  </button>
+
+  <div
+    class="relative min-h-[34rem] overflow-hidden bg-dark-surface bg-cover bg-center px-6 py-8 md:min-h-[42rem] md:px-18 md:py-12"
+    style={`background-image: url('${testimonials[0].image}');`}
+    data-testimonials-panel
+  >
+    <div class="absolute inset-0 bg-dark-bg/65"></div>
+
+    <div class="relative z-10 flex min-h-[30rem] flex-col md:min-h-[36rem]">
+      <p class="font-mono text-brand-accent text-base tracking-wide uppercase">
+        <span class="font-black font-display text-brand text-hero"
+          >.
+        </span><span data-testimonials-location
+          >{testimonials[0].city}, {testimonials[0].country}</span
+        >
+      </p>
+      <p
+        class="font-sans italic text-dark-primary text-base py-10"
+        data-testimonials-quote
+      >
+        {testimonials[0].quote}
+      </p>
+      <p
+        class="mt-auto border-t border-dark-muted pt-4 font-mono text-base tracking-wide text-brand-accent uppercase"
+        data-testimonials-person
+      >
+        {testimonials[0].name}, {testimonials[0].occupation}
+      </p>
+    </div>
+  </div>
+
+  <button
+    class="absolute -right-3 top-1/2 z-20 hidden -translate-y-1/2 text-dark-primary transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand md:block"
+    type="button"
+    aria-label="Next testimonial"
+    data-testimonials-next
+  >
+    <span class="block text-hero leading-none">&gt;</span>
+  </button>
+
+  <div
+    class="mt-6 flex items-center justify-center gap-3"
+    aria-label="Choose testimonial"
+    data-testimonials-dots
+  >
+    {
+      testimonials.map((testimonial, index) => (
+        <button
+          class:list={[
+            "h-3 w-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-brand",
+            index === 0 ? "bg-brand" : "bg-brand-accent",
+          ]}
+          type="button"
+          aria-label={`Show testimonial from ${testimonial.name}`}
+          aria-current={index === 0 ? "true" : "false"}
+          data-testimonials-dot
+          data-index={index}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  type Testimonial = {
+    city: string;
+    country: string;
+    quote: string;
+    name: string;
+    occupation: string;
+    image: string;
+  };
+
+  const carousels = document.querySelectorAll("[data-testimonials-carousel]");
+
+  carousels.forEach((carousel) => {
+    const testimonials = JSON.parse(
+      carousel.getAttribute("data-testimonials") || "[]",
+    ) as Testimonial[];
+    const location = carousel.querySelector("[data-testimonials-location]");
+    const quote = carousel.querySelector("[data-testimonials-quote]");
+    const person = carousel.querySelector("[data-testimonials-person]");
+    const panel = carousel.querySelector<HTMLElement>(
+      "[data-testimonials-panel]",
+    );
+    const dots = carousel.querySelectorAll("[data-testimonials-dot]");
+    const previousButton = carousel.querySelector("[data-testimonials-prev]");
+    const nextButton = carousel.querySelector("[data-testimonials-next]");
+    let activeIndex = 0;
+
+    const showTestimonial = (index: number) => {
+      if (!testimonials.length) {
+        return;
+      }
+
+      activeIndex = (index + testimonials.length) % testimonials.length;
+      const activeTestimonial = testimonials[activeIndex];
+
+      if (location) {
+        location.textContent = `${activeTestimonial.city}, ${activeTestimonial.country}`;
+      }
+
+      if (quote) {
+        quote.textContent = activeTestimonial.quote;
+      }
+
+      if (person) {
+        person.textContent = `${activeTestimonial.name}, ${activeTestimonial.occupation}`;
+      }
+
+      if (panel) {
+        panel.style.backgroundImage = `url('${activeTestimonial.image}')`;
+      }
+
+      dots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeIndex;
+        dot.classList.toggle("bg-brand", isActive);
+        dot.classList.toggle("bg-brand-accent", !isActive);
+        dot.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+    };
+
+    previousButton?.addEventListener("click", () => {
+      showTestimonial(activeIndex - 1);
+    });
+
+    nextButton?.addEventListener("click", () => {
+      showTestimonial(activeIndex + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        showTestimonial(Number(dot.getAttribute("data-index")));
+      });
+    });
+  });
+</script>

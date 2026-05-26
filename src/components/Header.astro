@@ -114,10 +114,22 @@ const Page = Astro.props.Page;
     const hamburger = document.getElementById("hamburger");
     const mobileMenu = document.getElementById("mobileMenu");
 
-    hamburger.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("hidden") === false;
+    const setMobileMenuOpen = (isOpen) => {
+      mobileMenu.classList.toggle("hidden", !isOpen);
       siteHeader.classList.toggle("mobile-menu-open", isOpen);
       hamburger.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    hamburger.addEventListener("click", () => {
+      setMobileMenuOpen(mobileMenu.classList.contains("hidden"));
+    });
+
+    document.addEventListener("click", (event) => {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+
+      if (isOpen && !siteHeader.contains(event.target)) {
+        setMobileMenuOpen(false);
+      }
     });
   </script>
 
@@ -204,9 +216,15 @@ const Page = Astro.props.Page;
 
     #mobileMenu {
       display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       flex-direction: column;
       gap: 0.6rem;
       padding: 2rem 2rem 7rem 2rem;
+      background: #0a0a0a;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 86px));
       text-align: right;
     }
 
@@ -220,11 +238,15 @@ const Page = Astro.props.Page;
     }
 
     @media (max-width: 767px) {
+      header {
+        position: fixed;
+        right: 0;
+        left: 0;
+      }
+
       header.mobile-menu-open {
         background: #0a0a0a;
         border-bottom: 0;
-        /* shape the angled bottom: */
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 86px));
       }
 
       header.mobile-menu-open #mobileAlwaysVisible {

@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import Accordion from "../components/Accordion.astro";
+import Testimonials from "../components/Testimonials.astro";
 // import heroImg from "../assets/hero-img.webp";
 import Arrow from "../assets/accordionArrow.svg";
 import "../styles/global.css";
+import PowerHop1000 from "../assets/powerhop1000/face-1000-png.png";
+import Star from "../assets/star.svg";
+import OurTeam from "../assets/ourTeam.webp";
 ---
 
 <Layout Page="Home" Title="Home">
@@ -18,7 +22,7 @@ import "../styles/global.css";
     </h1>
     <!-- !!! temporary link, CHANGE WHEN READY !!! -->
     <Button
-      class="mx-6 my-12"
+      class="mx-6 my-12 max-w-100 place-self-center"
       href="/OurServices"
       variant={2}
       text="Discover POWER/HOP1000 →"
@@ -31,13 +35,31 @@ import "../styles/global.css";
     variant={1}
     text="Booking (temporary button!) →"
   />
-  <div id="discoverSection" class="m-6">
-    <h2 class="font-display text-light-primary text-hero font-black">
-      Our solution to unreliable grids.
-    </h2>
-    <p class="font-sans text-brand text-2xl font-bold tracking-widest">
-      POWER/HOP series
-    </p>
+  <div
+    id="discoverSection"
+    class="relative left-1/2 mb-12 -ml-[50vw] w-screen overflow-hidden py-10 before:absolute before:inset-[6.5rem_0_1.5rem_0] before:bg-brand-accent before:content-[''] before:[clip-path:polygon(0_20%,100%_0,100%_80%,0_100%)] after:absolute after:inset-[8.5rem_45%_4rem_0] after:bg-[image:var(--starPattern)] after:bg-[length:7rem] after:bg-repeat after:opacity-80 after:content-[''] md:before:inset-[6rem_0_3rem_0] md:after:inset-[10rem_58%_5rem_0] md:after:bg-[length:8rem]"
+  >
+    <div class="relative z-10 mx-auto max-w-[1200px] px-6">
+      <h2
+        class="font-display text-light-primary text-hero font-black md:max-w-[46rem] md:text-huge"
+      >
+        Our solution to unreliable grids.
+      </h2>
+      <div
+        class="grid min-h-[22rem] grid-cols-[0.75fr_1.25fr] md:min-h-[30rem]"
+      >
+        <p
+          class="col-start-1 pt-4 font-sans text-brand text-2xl font-bold uppercase tracking-[0.22em] md:text-4xl"
+        >
+          POWER/<br />HOP<br />SERIES
+        </p>
+        <img
+          class="col-start-2 row-start-1 -ml-16 mt-6 w-[145%] max-w-none place-self-end [clip-path:polygon(0_0,100%_0,100%_82%,0_100%)] md:-ml-10 md:mt-0 md:w-[120%]"
+          src={PowerHop1000.src}
+          alt="power/hop1000 unit front view"
+        />
+      </div>
+    </div>
   </div>
   <div class="m-6 bg-light-bg p-6 border border-light-subtle">
     <h2 class="font-display text-light-primary text-4xl font-black">
@@ -55,8 +77,10 @@ import "../styles/global.css";
       <Button href="/OurServices" variant={1} text="Models →" />
     </div>
   </div>
-  <div class="m-6 md:grid-cols-3 grid md:gap-12 mx-12 mt-12 mb-8">
-    <div>
+  <div
+    class="m-6 md:grid-cols-3 grid md:gap-12 mx-12 mt-12 mb-8 bg-brand-accent full-bleed-bg pt-8 pb-4"
+  >
+    <div class="star-bg">
       <h3
         class="font-sans capitalize text-right text-light-primary text-2xl tracking-widest"
       >
@@ -67,7 +91,7 @@ import "../styles/global.css";
         surprise fees or bills.
       </p>
     </div>
-    <div>
+    <div class="star-bg">
       <h3
         class="font-sans capitalize text-right text-light-primary text-2xl tracking-widest"
       >
@@ -78,7 +102,7 @@ import "../styles/global.css";
         time for no additional fee.
       </p>
     </div>
-    <div>
+    <div class="star-bg">
       <h3
         class="font-sans capitalize text-right text-light-primary text-2xl tracking-widest"
       >
@@ -96,47 +120,101 @@ import "../styles/global.css";
       content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis, consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat pharetra. Fusce eget ante convallis, congue est placerat, bibendum justo."
     />
   </div>
-  <div class="p-6 bg-dark-bg text-dark-primary">
+  <div class="m-6 p-6 bg-dark-bg full-bleed-bg-black text-dark-primary">
     <h2
       class="font-display text-hero text-dark-primary font-black pb-4 text-right"
     >
       Fulfilling real needs for real Nigerians<span class="text-brand">.</span>
     </h2>
     <div>
-      <div>
-        <p>[dot] oshodi-isolo, lagos</p>
-        <p>
-          We try to be digital, and the same do our customers. We repair devices
-          - but when the power is out, so is business. The Power/Hop1000 keeps
-          our terminals and tools running even during outages, and I don't need
-          to worry about charging it when the power comes back on.
-        </p>
-        <p>Akinwunmi Akintola, REPAIRMAN</p>
-      </div>
+      <Testimonials
+        testimonials={[
+          {
+            city: "Lagos",
+            country: "Nigeria",
+            quote:
+              "We try to be digital, and the same do our customers. We repair devices - but when the power is out, so is business. The Power/Hop1000 keeps our terminals and tools running even during outages, and I don't need to worry about charging it when the power comes back on.",
+            name: "Akinwunmi Akintola",
+            occupation: "REPAIRMAN",
+          },
+          {
+            city: "Ibadan",
+            country: "Nigeria",
+            quote:
+              "Our freezer used to shut down during long outages, and every lost hour meant lost stock. Power/Hop keeps the essentials running so I can serve customers without guessing when electricity will return.",
+            name: "Chiamaka Okoro",
+            occupation: "SHOP OWNER",
+          },
+          {
+            city: "Abuja",
+            country: "Nigeria",
+            quote:
+              "At the clinic, even short outages interrupt the work. The Power/Hop unit gives us quiet backup for lights, phones, and basic equipment while we continue helping people.",
+            name: "Emeka Balogun",
+            occupation: "CLINIC MANAGER",
+          },
+          {
+            city: "Kano",
+            country: "Nigeria",
+            quote:
+              "I run lessons in the evening, and the children cannot wait for the grid. With Power/Hop, class continues, devices stay charged, and parents know the schedule will hold.",
+            name: "Aisha Bello",
+            occupation: "TUTOR",
+          },
+        ]}
+      />
     </div>
   </div>
-  <div class="p-6">
-    <h2 class="font-display text-hero text-light-primary font-black pb-4">
+  <div class="p-6 md:grid-cols-2 grid md:gap-6">
+    <h2
+      class="font-display text-hero text-light-primary font-black pb-4 md:col-span-2"
+    >
       Not just a provider, <span class="text-brand">but a partner.</span>
     </h2>
-    <img src="" alt="" />
-    <p class="font-sans text-light-secondary text-md pb-6">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
-      orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu
-      eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis,
-      consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat
-      pharetra. Fusce eget ante convallis, congue est placerat, bibendum justo.
-    </p>
-    <Button href="/AboutUs" variant={1} text="About us →" />
+    <div class="pt-4 md:col-start-2 md:pt-0">
+      <img src={OurTeam.src} alt="our team" />
+      <p class="font-mono text-light-muted text-base pb-4 pt-2 text-right">
+        HEADQUARTERS, LAGOS
+      </p>
+    </div>
+    <div class="md:row-start-2">
+      <p class="font-sans text-light-secondary text-md pb-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
+        orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu
+        eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis,
+        consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat
+        pharetra. Fusce eget ante convallis, congue est placerat, bibendum
+        justo.
+      </p>
+      <Button href="/AboutUs" variant={1} text="About us →" />
+    </div>
   </div>
 </Layout>
 
-<style>
+<style define:vars={{ starPattern: `url(${Star.src})` }}>
   #heroSection {
+    margin-top: -2rem;
+    padding-top: 6rem;
     background-image: url("src/assets/hero-img.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #1a1a1a; /* Fallback color */
+  }
+
+  .full-bleed-bg {
+    box-shadow: 0 0 0 100vmax #e0f3eb;
+    clip-path: inset(0 -100vmax);
+  }
+
+  .full-bleed-bg-black {
+    box-shadow: 0 0 0 100vmax #0a0a0a;
+    clip-path: inset(0 -100vmax);
+  }
+
+  .star-bg {
+    background-image: var(--starPattern);
+    background-repeat: no-repeat;
+    background-position: right top;
   }
 </style>
