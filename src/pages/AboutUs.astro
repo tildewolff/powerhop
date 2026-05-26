@@ -9,7 +9,7 @@ import OurTeam from "../assets/ourTeam.webp";
 ---
 
 <Layout Page="AboutUs" Title="About Us">
-  <section class="about-hero mt-20" aria-labelledby="about-hero-title">
+  <section class="about-hero" aria-labelledby="about-hero-title">
     <div
       aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 top-0 z-[1] h-[52%] bg-[linear-gradient(170deg,_rgba(247,247,247,1)_0%,_rgba(247,247,247,0.95)_42%,_rgba(247,247,247,0)_76%)]"
@@ -17,7 +17,7 @@ import OurTeam from "../assets/ourTeam.webp";
     </div>
     <h1
       id="about-hero-title"
-      class="about-hero-title text-hero font-black font-display text-light-primary m-6"
+      class="about-hero-title text-hero font-black font-display text-light-primary mx-6 mb-6"
     >
       Not just a provider, but a partner<span class="text-brand">.</span>
     </h1>
@@ -112,7 +112,7 @@ import OurTeam from "../assets/ourTeam.webp";
 
   .about-hero-image {
     position: absolute;
-    inset: 19% 0 0;
+    inset: 5rem 0 0;
     z-index: 0;
     clip-path: polygon(0 18%, 100% 0, 100% 78%, 0 100%);
   }
@@ -124,10 +124,20 @@ import OurTeam from "../assets/ourTeam.webp";
     object-position: center bottom;
   }
 
+  .about-hero {
+    margin-top: 0rem;
+  }
+
   @media (max-width: 700px) {
     .about-hero-image {
-      inset: 20% 0 0;
+      inset: 7rem 0 0;
       clip-path: polygon(0 12%, 100% 0, 100% 84%, 0 100%);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about-hero {
+      margin-top: 2rem;
     }
   }
 </style>
