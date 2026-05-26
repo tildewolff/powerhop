@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import Accordion from "../components/Accordion.astro";
 import Testimonials from "../components/Testimonials.astro";
-// import heroImg from "../assets/hero-img.webp";
+import heroImg from "../assets/hero-img.webp";
 import Arrow from "../assets/accordionArrow.svg";
 import "../styles/global.css";
 import PowerHop1000 from "../assets/powerhop1000/face-1000-png.png";
-import Star from "../assets/star.svg";
+import Star from "../assets/Star.svg";
 import OurTeam from "../assets/ourTeam.webp";
 ---
 
@@ -191,11 +191,11 @@ import OurTeam from "../assets/ourTeam.webp";
   </div>
 </Layout>
 
-<style define:vars={{ starPattern: `url(${Star.src})` }}>
+<style define:vars={{ heroImage: `url(${heroImg.src})`, starPattern: `url(${Star.src})` }}>
   #heroSection {
     margin-top: -2rem;
     padding-top: 6rem;
-    background-image: url("src/assets/hero-img.webp");
+    background-image: var(--heroImage);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
