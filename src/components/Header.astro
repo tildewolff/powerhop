@@ -11,14 +11,14 @@ const Page = Astro.props.Page;
     <!-- logos -->
     <div id="mobileAlwaysVisible">
       <a
-        href="/index.html"
+        href="/"
         class="mobileClosedLogo text-4xl font-display font-black"
         aria-label="PowerHop home"
       >
         <span>POWER</span><span>HOP</span>
       </a>
       <a
-        href="/index.html"
+        href="/"
         class="mobileOpenLogo text-4xl font-display font-black"
         aria-label="PowerHop home"
       >
@@ -41,27 +41,27 @@ const Page = Astro.props.Page;
     <!-- Mobile -->
     <nav id="mobileMenu" class="hidden">
       <a
-        href="/index.html"
+        href="/"
         class=`font-display text-brand font-black text-4xl ${Page==="Home" ? 'active':''}`
         >Home</a
       >
       <a
-        href="/OurServices"
+        href="/services/"
         class=`font-display text-brand font-black text-4xl${Page==="OurServices" ? 'active':''}`
         >Our services</a
       >
       <a
-        href="/AboutUs"
+        href="/about/"
         class=`font-display text-brand font-black text-4xl${Page==="AboutUs" ? 'active':''}`
         >About us</a
       >
       <a
-        href="/FAQ"
+        href="/faq/"
         class=`font-display text-brand font-black text-4xl${Page==="FAQ" ? 'active':''}`
         >FAQ</a
       >
       <a
-        href="/Profile"
+        href="/profile/"
         class=`font-display text-brand font-black text-4xl${Page==="Profile" ? 'active':''}`
         >Log in</a
       >
@@ -71,7 +71,7 @@ const Page = Astro.props.Page;
     <div class="desktopMenu">
       <div id="desktopGrid">
         <a
-          href="/index.html"
+          href="/"
           class="mobileClosedLogo text-4xl font-display font-black"
           aria-label="PowerHop home"
         >
@@ -79,27 +79,27 @@ const Page = Astro.props.Page;
         </a>
         <div id="desktopNav">
           <a
-            href="/index.html"
+            href="/"
             class=`font-display text-brand font-black text-4xl ${Page==="Home" ? 'active':''}`
             >Home</a
           >
           <a
-            href="/OurServices"
+            href="/services/"
             class=`font-display text-brand font-black text-4xl${Page==="OurServices" ? 'active':''}`
             >Our Services</a
           >
           <a
-            href="/FAQ"
+            href="/faq/"
             class=`font-display text-brand font-black text-4xl${Page==="FAQ" ? 'active':''}`
             >FAQ</a
           >
           <a
-            href="/AboutUs"
+            href="/about/"
             class=`font-display text-brand font-black text-4xl${Page==="AboutUs" ? 'active':''}`
             >About Us</a
           >
           <a
-            href="/Profile"
+            href="/profile/"
             id="profileLink"
             class=`font-display text-brand underline font-black text-4xl${Page==="Profile" ? 'active':''}`
             >Log in</a
