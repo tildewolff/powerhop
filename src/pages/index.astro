@@ -12,9 +12,18 @@ import OurTeam from "../assets/ourTeam.webp";
 ---
 
 <Layout Page="Home" Title="Home">
-  <div id="heroSection" class="flex flex-col justify-center pt-16 pb-8">
+  <div
+    id="heroSection"
+    class="relative left-1/2 -ml-[50vw] flex w-screen flex-col justify-center overflow-hidden pt-16 pb-8"
+  >
+    <img
+      class="absolute inset-0 h-full w-full object-cover"
+      src={heroImg.src}
+      alt=""
+      aria-hidden="true"
+    />
     <h1
-      class="font-display text-huge text-dark-primary font-black text-right p-6"
+      class="z-10 font-display text-huge text-dark-primary font-black text-right m-6 max-w-[1200px] place-self-center"
     >
       The next chapter of accessible at-home energy<span class="text-brand"
         >.</span
@@ -22,12 +31,16 @@ import OurTeam from "../assets/ourTeam.webp";
     </h1>
     <!-- !!! temporary link, CHANGE WHEN READY !!! -->
     <Button
-      class="mx-6 my-12 max-w-100 place-self-center"
+      class="z-10 mx-6 my-12 max-w-100 place-self-center"
       href="/OurServices"
       variant={2}
       text="Discover POWER/HOP1000 →"
     />
-    <img class="w-8 place-self-center pb-6" src={Arrow.src} alt="scroll down" />
+    <img
+      class="z-10 w-8 place-self-center pb-6"
+      src={Arrow.src}
+      alt="scroll down"
+    />
   </div>
   <div
     id="discoverSection"
@@ -48,7 +61,7 @@ import OurTeam from "../assets/ourTeam.webp";
           POWER/<br />HOP<br />SERIES
         </p>
         <img
-          class="col-start-2 row-start-1 -ml-16 mt-6 w-[145%] max-w-none place-self-end [clip-path:polygon(0_0,100%_0,100%_82%,0_100%)] md:-ml-10 md:mt-0 md:w-[120%]"
+          class="col-start-2 row-start-1 -ml-16 mt-6 w-[145%] max-w-none place-self-end [clip-path:polygon(0_0,100%_0,100%_82%,0_100%)] md:-ml-10 md:translate-y-[-4rem] md:max-w-[350px] lg:[clip-path:none]"
           src={PowerHop1000.src}
           alt="power/hop1000 unit front view"
         />
@@ -185,14 +198,10 @@ import OurTeam from "../assets/ourTeam.webp";
   </div>
 </Layout>
 
-<style define:vars={{ heroImage: `url(${heroImg.src})`, starPattern: `url(${Star.src})` }}>
+<style define:vars={{ starPattern: `url(${Star.src})` }}>
   #heroSection {
     margin-top: -2rem;
     padding-top: 6rem;
-    background-image: var(--heroImage);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: #1a1a1a; /* Fallback color */
   }
 
