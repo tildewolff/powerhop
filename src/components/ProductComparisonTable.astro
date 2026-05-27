@@ -159,6 +159,28 @@ const Page = Astro.props.Page;
   }
 
   /* Keep the table readable on very narrow screens. */
+  @media (max-width: 63.9375rem) {
+    .comparisontable > * {
+      min-height: 3rem;
+      padding: 0.45rem 1rem;
+    }
+
+    .comparisontable > div {
+      justify-content: end;
+    }
+
+    .comparisontable p {
+      font-size: 12px;
+    }
+
+    .productname:nth-child(1)::before,
+    .productname:nth-child(1)::after,
+    .productname:nth-child(2)::before,
+    .productname:nth-child(2)::after {
+      font-size: 16px;
+    }
+  }
+
   @media (max-width: 24rem) {
     .comparisontable > * {
       padding: 0.65rem 0.8rem;

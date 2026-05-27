@@ -7,10 +7,12 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
 ---
 
 <Layout Page="AboutUs" Title="About Us">
-  <h1>Booking Flow</h1>
   <div class="booking-page">
     <form id="bookingFlow">
       <!-- Step 1: model selection -->
+      <p class="stepheader" data-step-index="0">
+        <span>1.</span><span>Model</span>
+      </p>
       <section class="booking-step-one" id="one">
         <p class="size-lg">
           Select your PowerHop model:<span style="color: red;">*</span>
@@ -19,12 +21,18 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
       </section>
 
       <!-- Step 2: optional add-ons -->
+      <p class="stepheader" data-step-index="1">
+        <span>2.</span><span>Power-ups</span>
+      </p>
       <section class="booking-step-two" id="two">
         <p>Select any optional add-ons:</p>
         <ChooseYourAddons />
       </section>
 
       <!-- Step 3: installation address -->
+      <p class="stepheader" data-step-index="2">
+        <span>3.</span><span>Address</span>
+      </p>
       <section class="booking-step-three" id="three">
         <p>
           Add the address for installation:<span style="color: red;">*</span>
@@ -86,6 +94,9 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
       </section>
 
       <!-- Step 4: installation date and time -->
+      <p class="stepheader" data-step-index="3">
+        <span>4.</span><span>Time</span>
+      </p>
       <section class="booking-step-four" id="four">
         <div class="form-control">
           <p>
@@ -120,6 +131,9 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
       </section>
 
       <!-- Step 5: customer contact details -->
+      <p class="stepheader" data-step-index="4">
+        <span>5.</span><span>Contact</span>
+      </p>
       <section class="booking-step-five" id="five">
         <p>
           Add your contact information, or login to an existing user profile:<span
@@ -149,6 +163,9 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
       </section>
 
       <!-- Step 6: payment and billing address -->
+      <p class="stepheader" data-step-index="5">
+        <span>6.</span><span>Billing</span>
+      </p>
       <section class="booking-step-six" id="six">
         <p>
           Add your card details and billing address:<span style="color: red;"
@@ -229,6 +246,9 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
       </section>
 
       <!-- Step 7: final review before submitting to Supabase -->
+      <p class="stepheader" data-step-index="6">
+        <span>7.</span><span>Summary</span>
+      </p>
       <section class="booking-step-seven" id="seven">
         <p>Please ensure all details are correct:</p>
 
@@ -305,8 +325,6 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
       </section>
     </form>
   </div>
-  <p id="stepInfo"></p>
-
   <div class="buttons-control">
     <FlowPreviousButton /><FlowContinueButton />
   </div>
@@ -314,10 +332,10 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
   <!-- Handles step navigation, per-step validation, and the live review summary. -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const stepInfo = document.getElementById("stepInfo");
       const navLeft = document.getElementById("navLeft");
       const navRight = document.getElementById("navRight");
       const form = document.getElementById("bookingFlow") as HTMLFormElement;
+      const stepHeaders = document.querySelectorAll<HTMLElement>(".stepheader");
 
       const formSteps = ["one", "two", "three", "four", "five", "six", "seven"];
       const modelDetails = {
@@ -491,6 +509,7 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
 
           if (section) {
             section.style.display = "none";
+            section.classList.remove("active-step-section");
           }
         });
 
@@ -498,11 +517,14 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
 
         if (currentSection) {
           currentSection.style.display = "block";
+          currentSection.classList.add("active-step-section");
         }
 
-        if (stepInfo) {
-          stepInfo.textContent = `Step ${currentStep + 1} of ${formSteps.length}`;
-        }
+        stepHeaders.forEach((header, index) => {
+          header.classList.toggle("is-active", index === currentStep);
+          header.classList.toggle("is-complete", index < currentStep);
+          header.classList.toggle("is-upcoming", index > currentStep);
+        });
 
         if (navLeft) {
           navLeft.style.display = currentStep === 0 ? "none" : "block";
@@ -631,6 +653,79 @@ import FlowPreviousButton from "../components/FlowPreviousButton.astro";
 
       alert("Booking saved!");
       form.reset();
+      window.location.href = "/profile/";
     });
   </script>
 </Layout>
+
+<style>
+  .booking-page {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+  }
+
+  .stepheader {
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0.85rem 1.35rem;
+    color: #a7a7a7;
+    font-family: "Inter", "Arial Nova", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .stepheader span:first-child {
+    letter-spacing: 0;
+  }
+
+  .stepheader.is-active {
+    color: #111111;
+    border-bottom: 1px solid #008751;
+  }
+
+  .stepheader.is-complete {
+    color: #9f9f9f;
+  }
+
+  .stepheader.is-upcoming {
+    color: #a7a7a7;
+  }
+
+  .active-step-section {
+    border-bottom: 1px solid #008751;
+    padding: 1.6rem 1.35rem 1.75rem;
+  }
+
+  .buttons-control {
+    width: min(100%, 34rem);
+    margin: 1.1rem auto 0;
+    padding: 0 1.35rem;
+  }
+
+  @media (max-width: 30rem) {
+    .stepheader {
+      grid-template-columns: 1.8rem minmax(0, 1fr);
+      gap: 0.75rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      font-size: 0.92rem;
+      letter-spacing: 0.28em;
+    }
+
+    .active-step-section {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+
+    .buttons-control {
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+  }
+</style>
