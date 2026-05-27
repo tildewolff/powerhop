@@ -6,7 +6,7 @@ import Testimonials from "../components/Testimonials.astro";
 import heroImg from "../assets/hero-img.webp";
 import Arrow from "../assets/accordionArrow.svg";
 import "../styles/global.css";
-import PowerHop1000 from "../assets/powerhop1000/face-1000-png.png";
+import PowerHop1000 from "../assets/powerhop1000/face-1000.webp";
 import Star from "../assets/Star.svg";
 import OurTeam from "../assets/ourTeam.webp";
 ---
@@ -18,6 +18,7 @@ import OurTeam from "../assets/ourTeam.webp";
   >
     <img
       class="absolute inset-0 h-full w-full object-cover"
+      fetchpriority="high"
       src={heroImg.src}
       alt=""
       aria-hidden="true"
@@ -178,7 +179,7 @@ import OurTeam from "../assets/ourTeam.webp";
     >
       Not just a provider, <span class="text-brand">but a partner.</span>
     </h2>
-    <div class="pt-4 md:col-start-2 md:pt-0">
+    <div class="max-w-[800px] pt-4 md:col-start-2 md:pt-0">
       <img src={OurTeam.src} alt="our team" />
       <p class="font-mono text-light-muted text-base pb-4 pt-2 text-right">
         HEADQUARTERS, LAGOS
