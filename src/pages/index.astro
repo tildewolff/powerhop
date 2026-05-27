@@ -6,7 +6,7 @@ import Testimonials from "../components/Testimonials.astro";
 import heroImg from "../assets/hero-img.webp";
 import Arrow from "../assets/accordionArrow.svg";
 import "../styles/global.css";
-import PowerHop1000 from "../assets/powerhop1000/face-1000-png.png";
+import PowerHop1000 from "../assets/powerhop1000/face-1000-png.webp";
 import Star from "../assets/Star.svg";
 import OurTeam from "../assets/ourTeam.webp";
 ---
@@ -17,6 +17,7 @@ import OurTeam from "../assets/ourTeam.webp";
     class="relative left-1/2 ml-[-50vw] flex w-screen flex-col justify-center overflow-hidden pt-16 pb-8"
   >
     <img
+      fetchpriority="high"
       class="absolute inset-0 h-full w-full object-cover"
       src={heroImg.src}
       alt=""
