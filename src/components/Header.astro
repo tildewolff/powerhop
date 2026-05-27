@@ -2,8 +2,15 @@
 import logo from "../assets/logo.svg";
 import "../styles/global.css";
 
-// get page prop from loaded page
-const Page = Astro.props.Page;
+const currentPath = Astro.url.pathname;
+const activeClass = (href: string) =>
+  href === "/"
+    ? currentPath === "/"
+      ? "active"
+      : ""
+    : currentPath === href || currentPath.startsWith(href)
+      ? "active"
+      : "";
 ---
 
 <header id="siteHeader" class="bg-light-surface">
@@ -42,27 +49,27 @@ const Page = Astro.props.Page;
     <nav id="mobileMenu" class="hidden">
       <a
         href="/"
-        class=`font-display text-brand font-black text-4xl ${Page==="Home" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl ${activeClass("/")}`
         >Home</a
       >
       <a
         href="/services/"
-        class=`font-display text-brand font-black text-4xl${Page==="OurServices" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl ${activeClass("/services/")}`
         >Our services</a
       >
       <a
         href="/about/"
-        class=`font-display text-brand font-black text-4xl${Page==="AboutUs" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl ${activeClass("/about/")}`
         >About us</a
       >
       <a
         href="/faq/"
-        class=`font-display text-brand font-black text-4xl${Page==="FAQ" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl ${activeClass("/faq/")}`
         >FAQ</a
       >
       <a
         href="/profile/"
-        class=`font-display text-brand font-black text-4xl${Page==="Profile" ? 'active':''}`
+        class=`font-display text-brand font-black text-4xl ${activeClass("/profile/")}`
         >Log in</a
       >
     </nav>
@@ -80,28 +87,28 @@ const Page = Astro.props.Page;
         <div id="desktopNav">
           <a
             href="/"
-            class=`font-display text-brand font-black text-4xl ${Page==="Home" ? 'active':''}`
+            class=`font-display text-brand font-black text-4xl ${activeClass("/")}`
             >Home</a
           >
           <a
             href="/services/"
-            class=`font-display text-brand font-black text-4xl${Page==="OurServices" ? 'active':''}`
+            class=`font-display text-brand font-black text-4xl ${activeClass("/services/")}`
             >Our Services</a
           >
           <a
             href="/faq/"
-            class=`font-display text-brand font-black text-4xl${Page==="FAQ" ? 'active':''}`
+            class=`font-display text-brand font-black text-4xl ${activeClass("/faq/")}`
             >FAQ</a
           >
           <a
             href="/about/"
-            class=`font-display text-brand font-black text-4xl${Page==="AboutUs" ? 'active':''}`
+            class=`font-display text-brand font-black text-4xl ${activeClass("/about/")}`
             >About Us</a
           >
           <a
             href="/profile/"
             id="profileLink"
-            class=`font-display text-brand underline font-black text-4xl${Page==="Profile" ? 'active':''}`
+            class=`font-display text-brand font-black text-4xl ${activeClass("/profile/")}`
             >Log in</a
           >
         </div>
@@ -157,6 +164,15 @@ const Page = Astro.props.Page;
     a:hover {
       /* change to tailwind class */
       color: #008751;
+    }
+
+    #desktopNav a.active,
+    #mobileMenu a.active {
+      color: #004d2e;
+      text-decoration: underline;
+      text-decoration-color: #004d2e;
+      text-decoration-thickness: 0.12em;
+      text-underline-offset: 0.18em;
     }
 
     /* mobile specific styling */
@@ -277,11 +293,12 @@ const Page = Astro.props.Page;
         color: #f5f5f5;
       }
 
-      header.mobile-menu-open #mobileMenu a:last-child {
-        color: #e0f3eb;
+      header.mobile-menu-open #mobileMenu a.active {
+        color: #00a862;
         text-decoration: underline;
+        text-decoration-color: #00a862;
         text-decoration-thickness: 0.12em;
-        text-underline-offset: 0.12em;
+        text-underline-offset: 0.18em;
       }
     }
 

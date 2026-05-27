@@ -2,6 +2,8 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+
+const { Page } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +25,7 @@ import "../styles/global.css";
   </head>
   <body class="bg-light-surface">
     <!-- header component -->
-    <Header />
+    <Header Page={Page} />
     <main class="site-main">
       <!-- all pages go in here -->
       <slot />
