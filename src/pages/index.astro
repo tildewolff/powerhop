@@ -9,6 +9,7 @@ import "../styles/global.css";
 import PowerHop1000 from "../assets/powerhop1000/face-1000-png.webp";
 import Star from "../assets/Star.svg";
 import OurTeam from "../assets/ourTeam.webp";
+import { Image } from "astro:assets";
 ---
 
 <Layout Page="Home" Title="Home">
@@ -16,12 +17,14 @@ import OurTeam from "../assets/ourTeam.webp";
     id="heroSection"
     class="relative left-1/2 ml-[-50vw] flex w-screen flex-col justify-center overflow-hidden pt-16 pb-8"
   >
-    <img
-      fetchpriority="high"
-      class="absolute inset-0 h-full w-full object-cover"
-      src={heroImg.src}
+    <Image
+      src={heroImg}
       alt=""
-      aria-hidden="true"
+      class="absolute inset-0 h-full w-full object-cover"
+      widths={[480, 768, 1200, 1600]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
     />
     <h1
       class="z-10 font-display text-huge text-dark-primary font-black text-right m-6 max-w-300 place-self-center"
@@ -178,7 +181,7 @@ import OurTeam from "../assets/ourTeam.webp";
       Not just a provider, <span class="text-brand">but a partner.</span>
     </h2>
     <div class="pt-4 md:col-start-2 md:pt-0">
-      <img src={OurTeam.src} alt="our team" />
+      <Image src={OurTeam} alt="Our team" width={700} loading="lazy" />
       <p class="font-mono text-light-muted text-base pb-4 pt-2 text-right">
         HEADQUARTERS, LAGOS
       </p>
