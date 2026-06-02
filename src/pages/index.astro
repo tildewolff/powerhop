@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import Accordion from "../components/Accordion.astro";
-import AccordionWhatAmIUsedFor from "../components/AccordionWhatAmIUsedFor.astro";
 import Testimonials from "../components/Testimonials.astro";
 import heroImg from "../assets/hero-img.webp";
 import Arrow from "../assets/accordionArrow.svg";
@@ -39,7 +38,7 @@ import { Image } from "astro:assets";
       class="z-10 mx-6 my-12 max-w-100 place-self-center"
       href="/services/"
       variant={2}
-      text="EXPLORE OUR MODELS →"
+      text="Discover POWER/HOP1000 →"
     />
     <img
       class="z-10 w-8 place-self-center pb-6"
@@ -78,9 +77,8 @@ import { Image } from "astro:assets";
     <p class="font-sans text-light-secondary text-md py-4">
       Compact, quiet and powerful, the PowerHop power units switch on as soon as
       your grid fails, offering uninterrupted electricity for your most vital
-      appliances and tools. And when the power comes back on? The unit
-      automaticlly recharges over the course of 4 hours, ready for the next
-      outage. <br />
+      appliances and tools. And when the power comes back on? The unit recharges
+      over the course of 4 hours, ready for the next outage. <br />
       <br /> With models providing either 1,000, 2,000 or 8,000 Wh of maximum stored
       power respectively, there is an affordable solution to every need.
     </p>
@@ -126,7 +124,10 @@ import { Image } from "astro:assets";
     </div>
   </div>
   <div class="m-6">
-    <AccordionWhatAmIUsedFor />
+    <Accordion
+      title="What am I used for?"
+      content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis, consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat pharetra. Fusce eget ante convallis, congue est placerat, bibendum justo."
+    />
   </div>
   <div class="m-6 p-6 bg-dark-bg full-bleed-bg-black text-dark-primary">
     <h2
@@ -187,12 +188,12 @@ import { Image } from "astro:assets";
     </div>
     <div class="md:row-start-2">
       <p class="font-sans text-light-secondary text-md pb-6">
-        We're a small team from Lagos — and we're tired of the same problem
-        everyone else here is tired of. <br />Generators that break down. Fuel
-        that runs out. Bills that keep climbing. For most of us, unreliable
-        power isn't an inconvenience — it's a daily tax on getting things done.
-        We've lived it ourselves, and we've watched it quietly drain the people
-        and businesses that keep this city moving.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eleifend
+        orci nec nunc sollicitudin venenatis. Vestibulum suscipit in quam eu
+        eleifend. Suspendisse ac elit nunc. Maecenas ut urna facilisis,
+        consectetur nisi eu, molestie mi. Nunc non ligula auctor dui placerat
+        pharetra. Fusce eget ante convallis, congue est placerat, bibendum
+        justo.
       </p>
       <Button href="/about/" variant={1} text="About us →" />
     </div>
